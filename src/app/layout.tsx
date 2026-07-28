@@ -8,8 +8,11 @@ const manrope = Manrope({ subsets: ["latin"], variable: "--font-sans" });
 const newsreader = Newsreader({ subsets: ["latin"], variable: "--font-serif", style: ["normal", "italic"] });
 
 export const metadata = {
-  title: "Sifra | Library & Café",
-  description: "A quiet book café and alternative space.",
+  title: {
+    default: "Sifra | Library & Café",
+    template: "%s | Sifra",
+  },
+  description: "A quiet book café and alternative space in Addis Ababa.",
 };
 
 export default function RootLayout({
@@ -19,7 +22,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${manrope.variable} ${newsreader.variable}`}>
-      <body className="flex flex-col min-h-screen bg-gray-50 text-gray-900 font-sans font-light">
+      <body className="flex flex-col min-h-screen font-sans" style={{ background: "#F7F4EE", color: "#352214" }}>
         <AuthProvider>
           <Navbar />
           <div className="flex-grow">

@@ -4,7 +4,6 @@ import { getUserFromRequest } from "@/lib/auth";
 
 export const dynamic = "force-dynamic";
 
-
 export async function GET(req: Request) {
   try {
     const user = await getUserFromRequest(req);
@@ -32,11 +31,28 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
-    const { copyId, userId } = await req.json();
+    const { copyId, customerEmail, startTime } = await req.json();
 
     const copy = await prisma.bookCopy.findUnique({ where: { CopyID: copyId } });
     if (!copy || copy.Status !== "Available") {
       return NextResponse.json({ error: "Book copy is not available" }, { status: 400 });
+    }
+
+    // Determine the actual start time and round down to nearest 15 mins
+    const baseDate = startTime ? new Date(startTime) : new Date();
+    const minutes = baseDate.getMinutes();
+    const roundedMinutes = Math.floor(minutes / 15) * 15;
+    baseDate.setMinutes(roundedMinutes, 0, 0); // set to rounded minutes, 0 secs, 0 ms
+
+    // Look up user by email if provided
+    let targetUserId = null;
+    let finalCustomerEmail = customerEmail ? customerEmail.trim() : null;
+
+    if (finalCustomerEmail) {
+      const customer = await prisma.user.findUnique({ where: { Email: finalCustomerEmail } });
+      if (customer) {
+        targetUserId = customer.UserID;
+      }
     }
 
     // Transaction to update copy and create borrowing
@@ -48,7 +64,9 @@ export async function POST(req: Request) {
       prisma.borrowing.create({
         data: {
           CopyID: copyId,
-          UserID: userId,
+          UserID: targetUserId,
+          CustomerEmail: finalCustomerEmail,
+          BorrowedAt: baseDate,
           Status: "Active"
         }
       })

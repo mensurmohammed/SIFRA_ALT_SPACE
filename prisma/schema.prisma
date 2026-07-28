@@ -73,7 +73,8 @@ model BookCopy {
 model Borrowing {
   BorrowingID   String    @id @default(uuid())
   CopyID        String
-  UserID        String
+  UserID        String?
+  CustomerEmail String?
   BorrowedAt    DateTime  @default(now())
   ReturnedAt    DateTime?
   AmountCharged Float?
@@ -81,7 +82,7 @@ model Borrowing {
   CreatedAt     DateTime  @default(now())
 
   Copy          BookCopy  @relation(fields: [CopyID], references: [CopyID])
-  User          User      @relation(fields: [UserID], references: [UserID])
+  User          User?     @relation(fields: [UserID], references: [UserID])
 }
 
 model Wishlist {

@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
+import ErrorAlert from "@/components/ErrorAlert";
 
 export default function AddBookPage() {
   const router = useRouter();
@@ -49,7 +50,7 @@ export default function AddBookPage() {
   return (
     <div className="max-w-2xl mx-auto bg-white p-8 rounded-lg shadow">
       <h1 className="text-2xl font-bold mb-6">Add New Book</h1>
-      {error && <div className="bg-red-50 text-red-600 p-3 rounded mb-4 text-sm">{error}</div>}
+      <ErrorAlert error={error} className="mb-4" />
       <form onSubmit={handleSubmit} className="space-y-4">
         <div className="grid grid-cols-2 gap-4">
           <div>

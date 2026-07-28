@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { cleanErrorMessage } from "@/lib/error-formatter";
 
 export default function MenuItemsPage() {
   const [menuItems, setMenuItems] = useState<any[]>([]);
@@ -15,7 +16,8 @@ export default function MenuItemsPage() {
   const [toast, setToast] = useState<{ message: string, type: "error" | "success" } | null>(null);
 
   const showToast = (message: string, type: "error" | "success" = "error") => {
-    setToast({ message, type });
+    const formatted = type === "error" ? cleanErrorMessage(message) : message;
+    setToast({ message: formatted, type });
     setTimeout(() => setToast(null), 3000);
   };
 
@@ -81,7 +83,7 @@ export default function MenuItemsPage() {
   return (
     <div className="relative">
       {toast && (
-        <div className={`fixed top-4 left-1/2 transform -translate-x-1/2 px-6 py-3 rounded-lg shadow-xl z-50 text-white font-bold transition-all duration-300 ${toast.type === 'success' ? 'bg-green-600' : 'bg-red-500'}`}>
+        <div className={`fixed top-4 left-1/2 transform -translate-x-1/2 px-6 py-3 rounded-lg shadow-xl z-50 text-white font-bold transition-all duration-300 max-w-[90vw] sm:max-w-md break-words min-w-0 [overflow-wrap:anywhere] [word-break:break-word] ${toast.type === 'success' ? 'bg-green-600' : 'bg-red-500'}`}>
           {toast.message}
         </div>
       )}

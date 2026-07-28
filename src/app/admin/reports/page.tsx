@@ -1,28 +1,64 @@
 import { prisma } from "@/lib/prisma";
+import { TrendingUp, ShoppingCart, Download } from "lucide-react";
+
+export const dynamic = "force-dynamic";
 
 export default async function AdminReportsPage() {
   const orders = await prisma.order.findMany();
   const totalRevenue = orders.reduce((acc, curr) => acc + curr.TotalAmount, 0);
 
   return (
-    <div>
-      <h1 className="text-3xl font-serif font-bold text-gray-900 mb-8">System Reports & Analytics</h1>
-      
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-        <div className="bg-white p-6 rounded-lg shadow border border-gray-100 border-l-4 border-l-green-500">
-          <h3 className="text-gray-500 font-medium text-sm uppercase tracking-wider">All-Time Café Revenue</h3>
-          <p className="text-4xl font-bold text-gray-900 mt-2">{totalRevenue.toLocaleString()} ETB</p>
+    <div className="space-y-6">
+      <div>
+        <h1 className="font-serif font-bold text-primary-dark mb-1" style={{ fontSize: "2rem" }}>
+          System Reports &amp; Analytics
+        </h1>
+        <p className="text-text-muted text-sm">Financial overview and data export tools.</p>
+      </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+        <div
+          className="bg-white rounded-[12px] p-6 border-l-4 border border-border-color"
+          style={{ borderLeftColor: "#385723", boxShadow: "0 2px 8px rgba(53,34,20,0.05)" }}
+        >
+          <div className="flex items-center gap-3 mb-3">
+            <div className="w-9 h-9 rounded-full flex items-center justify-center" style={{ background: "rgba(56,87,35,0.08)" }}>
+              <TrendingUp className="w-4 h-4" style={{ color: "#385723" }} strokeWidth={1.5} />
+            </div>
+          </div>
+          <p className="text-xs font-semibold text-text-muted uppercase tracking-wide mb-1">All-Time Café Revenue</p>
+          <p className="text-4xl font-bold text-primary-dark">{totalRevenue.toLocaleString()} ETB</p>
         </div>
-        <div className="bg-white p-6 rounded-lg shadow border border-gray-100 border-l-4 border-l-olive">
-          <h3 className="text-gray-500 font-medium text-sm uppercase tracking-wider">Total Orders Processed</h3>
-          <p className="text-4xl font-bold text-gray-900 mt-2">{orders.length}</p>
+
+        <div
+          className="bg-white rounded-[12px] p-6 border-l-4 border border-border-color"
+          style={{ borderLeftColor: "#D4A359", boxShadow: "0 2px 8px rgba(53,34,20,0.05)" }}
+        >
+          <div className="flex items-center gap-3 mb-3">
+            <div className="w-9 h-9 rounded-full flex items-center justify-center" style={{ background: "rgba(212,163,89,0.10)" }}>
+              <ShoppingCart className="w-4 h-4" style={{ color: "#D4A359" }} strokeWidth={1.5} />
+            </div>
+          </div>
+          <p className="text-xs font-semibold text-text-muted uppercase tracking-wide mb-1">Total Orders Processed</p>
+          <p className="text-4xl font-bold text-primary-dark">{orders.length}</p>
         </div>
       </div>
-      
-      <div className="bg-white rounded-lg shadow p-6">
-        <h3 className="text-xl font-bold mb-4">Export Options</h3>
-        <p className="text-gray-600 mb-4">Export full historical data to CSV for external accounting software.</p>
-        <button className="bg-olive text-white px-4 py-2 rounded hover:bg-olive-dark">Export All Data (CSV)</button>
+
+      <div
+        className="bg-white rounded-[12px] p-6 border border-border-color"
+        style={{ boxShadow: "0 2px 8px rgba(53,34,20,0.05)" }}
+      >
+        <h2 className="font-serif font-bold text-primary-dark text-lg mb-2">Export Options</h2>
+        <p className="text-sm text-text-muted mb-5">
+          Export full historical data to CSV for external accounting software.
+        </p>
+        <button
+          className="flex items-center gap-2 px-5 py-2.5 rounded-[6px] text-sm font-semibold transition-opacity hover:opacity-90"
+          style={{ background: "#352214", color: "#FFFFFF" }}
+        >
+          <Download className="w-4 h-4" />
+          Export All Data (CSV)
+        </button>
       </div>
     </div>
   );

@@ -2,6 +2,8 @@
 
 import { useEffect } from "react";
 
+import { cleanErrorMessage } from "@/lib/error-formatter";
+
 interface ModalProps {
   isOpen: boolean;
   title?: string;
@@ -40,14 +42,16 @@ export default function Modal({
   return (
     <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/60 backdrop-blur-sm p-4">
       <div 
-        className="bg-white rounded-xl shadow-2xl max-w-sm w-full p-6 animate-in fade-in zoom-in duration-200 border border-gray-100"
+        className="bg-white rounded-xl shadow-2xl max-w-sm w-full p-6 animate-in fade-in zoom-in duration-200 border border-gray-100 overflow-hidden"
         role="dialog"
         aria-modal="true"
       >
         {title && (
           <h2 className="text-xl font-bold font-serif text-olive mb-2">{title}</h2>
         )}
-        <p className="text-gray-600 mb-8 whitespace-pre-wrap">{message}</p>
+        <p className="text-gray-600 mb-8 whitespace-pre-wrap break-words min-w-0 max-w-full [overflow-wrap:anywhere] [word-break:break-word]">
+          {cleanErrorMessage(message)}
+        </p>
         
         <div className="flex justify-end gap-3">
           {isConfirm ? (

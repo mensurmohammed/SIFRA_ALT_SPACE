@@ -4,15 +4,24 @@
 
 @layer base {
   :root {
-    --olive: #5A5B44;
-    --cream: #F3EEE7;
-    --dark: #2F2B24;
-    --gold: #C7A86A;
-    --beige: #E8D8C1;
+    --primary-dark: #352214;
+    --primary-light: #F7F4EE;
+    --accent-gold: #D4A359;
+    --card-bg: #FFFFFF;
+    --text-muted: #706F6F;
+    --border-color: #E0DCD3;
+    --badge-avail-bg: #E2F0D9;
+    --badge-avail-text: #385723;
+    --badge-borrow-bg: #FCE4D6;
+    --badge-borrow-text: #C65911;
+    --border-radius-sm: 6px;
+    --border-radius-md: 12px;
+    --border-radius-lg: 24px;
+    --shadow-sm: 0 2px 8px rgba(53, 34, 20, 0.05);
   }
 
   body {
-    @apply bg-cream text-dark font-sans;
+    @apply bg-primary-light text-primary-dark font-sans;
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -21,6 +30,99 @@
 
   button, a, input, textarea, select {
     @apply font-sans;
+  }
+}
+
+@layer components {
+  /* ─── Buttons ─────────────────────────────────────────── */
+  .btn {
+    @apply inline-flex items-center justify-center px-5 py-2.5 rounded-[6px] font-semibold transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 text-sm;
+  }
+  .btn-primary {
+    @apply btn bg-primary-dark text-white hover:bg-opacity-90 focus:ring-primary-dark;
+  }
+  .btn-gold {
+    @apply btn bg-accent-gold text-primary-dark hover:opacity-90 focus:ring-accent-gold;
+  }
+  .btn-outline-gold {
+    @apply btn border border-accent-gold text-accent-gold hover:bg-accent-gold hover:text-primary-dark focus:ring-accent-gold;
+  }
+  .btn-outline-white {
+    @apply btn border border-white text-white hover:bg-white hover:text-primary-dark focus:ring-white;
+  }
+  .btn-secondary {
+    @apply btn bg-primary-light text-primary-dark hover:bg-border-color focus:ring-accent-gold;
+  }
+  .btn-outline {
+    @apply btn border-2 border-primary-dark text-primary-dark hover:bg-primary-dark hover:text-white focus:ring-primary-dark;
+  }
+  .btn-danger {
+    @apply btn bg-red-600 text-white hover:bg-red-700 focus:ring-red-500;
+  }
+  .btn-icon {
+    @apply p-2 rounded-[6px] transition-all duration-200 hover:bg-white/10;
+  }
+
+  /* ─── Badges ──────────────────────────────────────────── */
+  .badge {
+    @apply px-2.5 py-1 rounded-full text-xs font-semibold;
+  }
+  .badge-available {
+    @apply badge;
+    background-color: var(--badge-avail-bg);
+    color: var(--badge-avail-text);
+  }
+  .badge-borrowed {
+    @apply badge;
+    background-color: var(--badge-borrow-bg);
+    color: var(--badge-borrow-text);
+  }
+  .badge-warning {
+    @apply badge bg-yellow-100 text-yellow-800;
+  }
+  .badge-danger {
+    @apply badge bg-red-100 text-red-700;
+  }
+  /* legacy aliases */
+  .badge-unavailable {
+    @apply badge bg-gray-200 text-gray-600;
+  }
+
+  /* ─── Cards ───────────────────────────────────────────── */
+  .card {
+    @apply bg-card-bg rounded-[12px] border border-border-color overflow-hidden;
+    box-shadow: var(--shadow-sm);
+  }
+  .card-body {
+    @apply p-6;
+  }
+
+  /* ─── Inputs ──────────────────────────────────────────── */
+  .input {
+    @apply w-full px-4 py-3 rounded-[8px] border border-border-color bg-white text-primary-dark placeholder:text-text-muted focus:outline-none focus:ring-2 focus:ring-accent-gold focus:border-transparent transition-all h-12;
+  }
+  .textarea {
+    @apply w-full px-4 py-3 rounded-[8px] border border-border-color bg-white text-primary-dark placeholder:text-text-muted focus:outline-none focus:ring-2 focus:ring-accent-gold focus:border-transparent transition-all resize-none;
+    min-height: 120px;
+  }
+
+  /* ─── Sidebar Nav Items ───────────────────────────────── */
+  .nav-item {
+    @apply flex items-center gap-3 px-4 py-2.5 rounded-[6px] font-medium transition-all duration-200 text-sm;
+  }
+  .nav-item-active {
+    @apply nav-item bg-accent-gold/20 text-accent-gold border-l-4 border-accent-gold;
+  }
+  .nav-item-inactive {
+    @apply nav-item text-white/70 hover:text-white hover:bg-white/10;
+  }
+
+  /* ─── Section Utilities ───────────────────────────────── */
+  .section-subtitle {
+    @apply text-xs font-semibold tracking-widest uppercase text-accent-gold mb-2;
+  }
+  .section-title {
+    @apply text-3xl font-serif font-bold text-primary-dark;
   }
 }
 

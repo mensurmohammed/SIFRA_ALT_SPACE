@@ -1,6 +1,6 @@
 export default function Logo({ className = "h-10 w-auto text-gold" }: { className?: string }) {
   return (
-    <svg className={className} viewBox="0 0 491.955 198.026" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg className={className} width="491.955" height="198.026" viewBox="0 0 491.955 198.026" fill="none" xmlns="http://www.w3.org/2000/svg">
       <defs>
         <filter colorInterpolationFilters="sRGB" x="-477.955" y="-184.026" width="479.955" height="186.026" id="filter_1">
           <feFlood floodOpacity="0" result="BackgroundImageFix_1" />

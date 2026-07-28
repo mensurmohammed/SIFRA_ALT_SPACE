@@ -4,6 +4,8 @@ import bcrypt from "bcryptjs";
 
 export const dynamic = "force-dynamic";
 
+import { cleanErrorMessage } from "@/lib/error-formatter";
+
 export async function POST(request: NextRequest) {
   try {
     const { firstName, lastName, email, phone, password, address } = await request.json();
@@ -34,6 +36,6 @@ export async function POST(request: NextRequest) {
 
     return NextResponse.json({ message: "Account created successfully" }, { status: 201 });
   } catch (err: any) {
-    return NextResponse.json({ error: err.message }, { status: 500 });
+    return NextResponse.json({ error: cleanErrorMessage(err.message) }, { status: 500 });
   }
 }

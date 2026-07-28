@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
+import { cleanErrorMessage } from "@/lib/error-formatter";
 
 export default function Error({
   error,
@@ -16,13 +17,13 @@ export default function Error({
 
   return (
     <div className="min-h-screen bg-cream flex items-center justify-center px-4">
-      <div className="max-w-md w-full bg-white rounded-xl shadow-xl p-8 text-center">
-        <div className="text-6xl mb-4">️</div>
+      <div className="max-w-md w-full bg-white rounded-xl shadow-xl p-8 text-center overflow-hidden">
+        <div className="text-6xl mb-4">⚠️</div>
         <h1 className="text-2xl font-serif font-bold text-dark mb-2">
           Something went wrong
         </h1>
-        <p className="text-dark/60 font-sans text-sm mb-6">
-          {error.message || "An unexpected error occurred"}
+        <p className="text-dark/60 font-sans text-sm mb-6 break-words min-w-0 max-w-full [overflow-wrap:anywhere] [word-break:break-word]">
+          {cleanErrorMessage(error.message)}
         </p>
         <div className="space-y-3">
           <button

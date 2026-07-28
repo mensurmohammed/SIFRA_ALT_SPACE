@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+import ErrorAlert from "@/components/ErrorAlert";
+import { cleanErrorMessage } from "@/lib/error-formatter";
 
 export default function ProfileClientView({ initialUser }: { initialUser: any }) {
   const [phone, setPhone] = useState(initialUser.Phone || "");
@@ -20,19 +22,21 @@ export default function ProfileClientView({ initialUser }: { initialUser: any })
     });
 
     setLoading(false);
-
     if (res.ok) {
       setMessage({ text: "Profile updated successfully!", type: "success" });
     } else {
       const data = await res.json();
-      setMessage({ text: data.error || "Failed to update profile", type: "error" });
+      setMessage({ text: cleanErrorMessage(data.error || "Failed to update profile"), type: "error" });
     }
   };
 
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
-      {message && (
-        <div className={`p-4 rounded-lg font-bold ${message.type === 'success' ? 'bg-green-50 text-green-800' : 'bg-red-50 text-red-800'}`}>
+      {message && message.type === "error" && (
+        <ErrorAlert error={message.text} />
+      )}
+      {message && message.type === "success" && (
+        <div className="p-4 rounded-lg font-bold bg-green-50 text-green-800 break-words min-w-0 max-w-full [overflow-wrap:anywhere] [word-break:break-word]">
           {message.text}
         </div>
       )}

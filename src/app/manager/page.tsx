@@ -1,5 +1,14 @@
 import { prisma } from "@/lib/prisma";
 import Link from "next/link";
+import {
+  Coffee,
+  ShoppingBag,
+  BookOpen,
+  AlertTriangle,
+  CreditCard,
+  Library,
+  ArrowLeftRight,
+} from "lucide-react";
 
 export const dynamic = "force-dynamic";
 
@@ -23,72 +32,120 @@ export default async function ManagerDashboardPage() {
 
   const todayRevenue = todayOrders.reduce(
     (sum: number, order: any) => sum + order.TotalAmount,
-    0,
+    0
   );
 
-  return (
-    <div>
-      <h1 className="text-3xl font-serif font-bold text-gray-900 mb-8">
-        Manager Dashboard
-      </h1>
+  const stats = [
+    {
+      icon: CreditCard,
+      label: "Today's Sales",
+      value: `${todayRevenue} ETB`,
+      color: "#D4A359",
+      bg: "rgba(212,163,89,0.10)",
+    },
+    {
+      icon: ShoppingBag,
+      label: "Orders Today",
+      value: todayOrders.length.toString(),
+      color: "#352214",
+      bg: "rgba(53,34,20,0.08)",
+    },
+    {
+      icon: BookOpen,
+      label: "Active Borrowings",
+      value: activeBorrowings.toString(),
+      color: "#D4A359",
+      bg: "rgba(212,163,89,0.10)",
+    },
+    {
+      icon: AlertTriangle,
+      label: "Low Stock Alerts",
+      value: lowStockItems.toString(),
+      color: lowStockItems > 0 ? "#C65911" : "#706F6F",
+      bg: lowStockItems > 0 ? "rgba(198,89,17,0.08)" : "rgba(112,111,111,0.08)",
+      danger: lowStockItems > 0,
+    },
+  ];
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-        <div className="bg-white p-6 rounded-lg shadow border border-gray-100">
-          <h3 className="text-gray-500 font-medium text-sm uppercase">
-            Today's Sales
-          </h3>
-          <p className="text-3xl font-bold text-gold mt-2">
-            {todayRevenue} ETB
-          </p>
-        </div>
-        <div className="bg-white p-6 rounded-lg shadow border border-gray-100">
-          <h3 className="text-gray-500 font-medium text-sm uppercase">
-            Orders Today
-          </h3>
-          <p className="text-3xl font-bold text-olive mt-2">
-            {todayOrders.length}
-          </p>
-        </div>
-        <div className="bg-white p-6 rounded-lg shadow border border-gray-100">
-          <h3 className="text-gray-500 font-medium text-sm uppercase">
-            Active Borrowings
-          </h3>
-          <p className="text-3xl font-bold text-gold mt-2">
-            {activeBorrowings}
-          </p>
-        </div>
-        <div className="bg-white p-6 rounded-lg shadow border border-gray-100 border-l-4 border-l-red-500">
-          <h3 className="text-gray-500 font-medium text-sm uppercase">
-            Low Stock Alerts
-          </h3>
-          <p className="text-3xl font-bold text-red-600 mt-2">
-            {lowStockItems}
-          </p>
-        </div>
+  const quickActions = [
+    {
+      href: "/manager/pos",
+      label: "Open Café POS",
+      icon: Coffee,
+      desc: "Process orders at the café counter",
+    },
+    {
+      href: "/manager/borrowings",
+      label: "Checkout Desk",
+      icon: ArrowLeftRight,
+      desc: "Manage book check-in and check-out",
+    },
+    {
+      href: "/manager/books",
+      label: "Library Catalog",
+      icon: Library,
+      desc: "Browse and manage the book collection",
+    },
+  ];
+
+  return (
+    <div className="space-y-8">
+      <div>
+        <h1 className="font-serif font-bold text-primary-dark mb-1" style={{ fontSize: "2rem" }}>
+          Manager Dashboard
+        </h1>
+        <p className="text-text-muted text-sm">Today&apos;s snapshot and quick access to key operations.</p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <Link
-          href="/manager/pos"
-          className="bg-olive text-white p-8 rounded-lg shadow text-center hover:bg-olive-dark transition-colors"
-        >
-          <div className="text-4xl mb-2"></div>
-          <h2 className="text-xl font-bold">Open Café POS</h2>
-        </Link>
-        <Link
-          href="/manager/borrowings"
-          className="bg-olive text-white p-8 rounded-lg shadow text-center hover:bg-olive-dark transition-colors"
-        >
-          <div className="text-4xl mb-2"></div>
-          <h2 className="text-xl font-bold">Checkout Desk</h2>
-        </Link>
-        <Link
-          href="/manager/books"
-          className="bg-gold text-white p-8 rounded-lg shadow text-center hover:bg-gold-light transition-colors"
-        >
-          <div className="text-4xl mb-2"></div>
-          <h2 className="text-xl font-bold">Library Catalog</h2>
-        </Link>
+      {/* Stat Cards */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+        {stats.map(({ icon: Icon, label, value, color, bg, danger }) => (
+          <div
+            key={label}
+            className={`bg-white rounded-[12px] p-6 border ${danger ? "border-l-4" : "border"} border-border-color`}
+            style={{
+              boxShadow: "0 2px 8px rgba(53,34,20,0.05)",
+              borderLeftColor: danger ? "#C65911" : undefined,
+            }}
+          >
+            <div className="flex items-center gap-3 mb-3">
+              <div className="w-10 h-10 rounded-full flex items-center justify-center" style={{ background: bg }}>
+                <Icon className="w-5 h-5" style={{ color }} strokeWidth={1.5} />
+              </div>
+            </div>
+            <p className="text-xs font-semibold text-text-muted uppercase tracking-wide mb-1">{label}</p>
+            <p
+              className="text-2xl font-bold"
+              style={{ color: danger ? "#C65911" : "#352214" }}
+            >
+              {value}
+            </p>
+          </div>
+        ))}
+      </div>
+
+      {/* Quick Action Cards */}
+      <div>
+        <h2 className="font-serif font-bold text-primary-dark text-lg mb-4">Quick Access</h2>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+          {quickActions.map(({ href, label, icon: Icon, desc }) => (
+            <Link
+              key={href}
+              href={href}
+              className="bg-white rounded-[12px] p-6 border border-border-color hover:shadow-soft-md transition-all group flex flex-col items-center text-center"
+              style={{ boxShadow: "0 2px 8px rgba(53,34,20,0.05)" }}
+            >
+              <div
+                className="w-14 h-14 rounded-full flex items-center justify-center mb-4 group-hover:scale-105 transition-transform"
+                style={{ background: "rgba(212,163,89,0.10)" }}
+              >
+                <Icon className="w-7 h-7" style={{ color: "#D4A359" }} strokeWidth={1.5} />
+              </div>
+              <h3 className="font-serif font-bold text-primary-dark text-base mb-1">{label}</h3>
+              <p className="text-xs text-text-muted">{desc}</p>
+            </Link>
+          ))}
+        </div>
       </div>
     </div>
   );

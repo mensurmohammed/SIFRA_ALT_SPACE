@@ -5,6 +5,8 @@ import { signJwt } from "@/lib/auth";
 
 export const dynamic = "force-dynamic";
 
+import { cleanErrorMessage } from "@/lib/error-formatter";
+
 export async function POST(request: NextRequest) {
   try {
     const { email, password, loginType } = await request.json();
@@ -55,6 +57,6 @@ export async function POST(request: NextRequest) {
 
     return response;
   } catch (err: any) {
-    return NextResponse.json({ error: err.message }, { status: 500 });
+    return NextResponse.json({ error: cleanErrorMessage(err.message) }, { status: 500 });
   }
 }

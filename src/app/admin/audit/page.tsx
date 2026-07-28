@@ -1,32 +1,81 @@
 export default function AuditLogsPage() {
+  const logs = [
+    {
+      timestamp: new Date(),
+      user: "admin@sifra.et",
+      action: "LOGIN",
+      details: "Successful authentication",
+      type: "neutral",
+    },
+    {
+      timestamp: new Date(Date.now() - 3600000),
+      user: "manager@sifra.et",
+      action: "ORDER_CREATED",
+      details: "Processed order in POS",
+      type: "success",
+    },
+  ];
+
+  const typeBadge = (type: string) => {
+    switch (type) {
+      case "success":
+        return { background: "#E2F0D9", color: "#385723" };
+      case "danger":
+        return { background: "#FCE4D6", color: "#C65911" };
+      default:
+        return { background: "#F7F4EE", color: "#352214" };
+    }
+  };
+
   return (
-    <div>
-      <h1 className="text-3xl font-serif font-bold text-gray-900 mb-8">Audit Logs</h1>
-      <p className="text-gray-600 mb-6">Security and activity tracking log.</p>
-      
-      <div className="bg-white rounded-lg shadow overflow-hidden">
-        <table className="min-w-full divide-y divide-gray-200">
-          <thead className="bg-gray-50">
-            <tr>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Timestamp</th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">User ID</th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Action Type</th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Details</th>
+    <div className="space-y-6">
+      <div>
+        <h1 className="font-serif font-bold text-primary-dark mb-1" style={{ fontSize: "2rem" }}>
+          Audit Logs
+        </h1>
+        <p className="text-text-muted text-sm">Security and activity tracking log.</p>
+      </div>
+
+      <div
+        className="bg-white rounded-[12px] border border-border-color overflow-hidden"
+        style={{ boxShadow: "0 2px 8px rgba(53,34,20,0.05)" }}
+      >
+        <table className="min-w-full">
+          <thead>
+            <tr style={{ background: "#F7F4EE", borderBottom: "1px solid #E0DCD3" }}>
+              {["Timestamp", "User", "Action Type", "Details"].map((h) => (
+                <th
+                  key={h}
+                  className="px-6 py-4 text-left text-xs font-semibold text-text-muted uppercase tracking-widest"
+                >
+                  {h}
+                </th>
+              ))}
             </tr>
           </thead>
-          <tbody className="bg-white divide-y divide-gray-200">
-            <tr>
-              <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{new Date().toLocaleString()}</td>
-              <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">admin@sifra.et</td>
-              <td className="px-6 py-4 whitespace-nowrap text-sm"><span className="bg-beige text-olive-dark px-2 rounded-full text-xs font-bold">LOGIN</span></td>
-              <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Successful authentication</td>
-            </tr>
-            <tr>
-              <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{new Date(Date.now() - 3600000).toLocaleString()}</td>
-              <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">manager@sifra.et</td>
-              <td className="px-6 py-4 whitespace-nowrap text-sm"><span className="bg-green-100 text-green-800 px-2 rounded-full text-xs font-bold">ORDER_CREATED</span></td>
-              <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Processed order in POS</td>
-            </tr>
+          <tbody>
+            {logs.map((log, i) => (
+              <tr
+                key={i}
+                style={{ borderBottom: i < logs.length - 1 ? "1px solid #E0DCD3" : "none" }}
+              >
+                <td className="px-6 py-4 text-sm text-text-muted whitespace-nowrap">
+                  {log.timestamp.toLocaleString()}
+                </td>
+                <td className="px-6 py-4 text-sm font-semibold text-primary-dark whitespace-nowrap">
+                  {log.user}
+                </td>
+                <td className="px-6 py-4 whitespace-nowrap">
+                  <span
+                    className="px-2.5 py-1 rounded-full text-xs font-bold"
+                    style={typeBadge(log.type)}
+                  >
+                    {log.action}
+                  </span>
+                </td>
+                <td className="px-6 py-4 text-sm text-text-muted">{log.details}</td>
+              </tr>
+            ))}
           </tbody>
         </table>
       </div>

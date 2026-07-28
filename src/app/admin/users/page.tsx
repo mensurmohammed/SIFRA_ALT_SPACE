@@ -1,48 +1,95 @@
 import { prisma } from "@/lib/prisma";
 
+export const dynamic = "force-dynamic";
+
 export default async function CustomerManagementPage() {
   const users = await prisma.user.findMany({
-    where: { Role: 'Customer' },
-    orderBy: { DateRegistered: 'desc' }
+    where: { Role: "Customer" },
+    orderBy: { DateRegistered: "desc" },
   });
 
   return (
-    <div>
-      <div className="flex justify-between items-center mb-8">
-        <h1 className="text-3xl font-serif font-bold text-gray-900">Customer Management</h1>
+    <div className="space-y-6">
+      <div>
+        <h1 className="font-serif font-bold text-primary-dark mb-1" style={{ fontSize: "2rem" }}>
+          Customer Accounts
+        </h1>
+        <p className="text-text-muted text-sm">All registered customer accounts.</p>
       </div>
 
-      <div className="bg-white rounded-lg shadow overflow-hidden">
-        <table className="min-w-full divide-y divide-gray-200">
-          <thead className="bg-gray-50">
-            <tr>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Name</th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Email</th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Date Registered</th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Status</th>
-              <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase">Actions</th>
+      {/* Table Card */}
+      <div
+        className="bg-white rounded-[12px] border border-border-color overflow-hidden"
+        style={{ boxShadow: "0 2px 8px rgba(53,34,20,0.05)" }}
+      >
+        <table className="min-w-full">
+          <thead>
+            <tr style={{ background: "#F7F4EE", borderBottom: "1px solid #E0DCD3" }}>
+              <th className="px-6 py-4 text-left text-xs font-semibold text-text-muted uppercase tracking-widest">
+                Name
+              </th>
+              <th className="px-6 py-4 text-left text-xs font-semibold text-text-muted uppercase tracking-widest">
+                Email
+              </th>
+              <th className="px-6 py-4 text-left text-xs font-semibold text-text-muted uppercase tracking-widest">
+                Date Registered
+              </th>
+              <th className="px-6 py-4 text-left text-xs font-semibold text-text-muted uppercase tracking-widest">
+                Status
+              </th>
+              <th className="px-6 py-4 text-right text-xs font-semibold text-text-muted uppercase tracking-widest">
+                Actions
+              </th>
             </tr>
           </thead>
-          <tbody className="bg-white divide-y divide-gray-200">
-            {users.map((u) => (
-              <tr key={u.UserID}>
-                <td className="px-6 py-4 whitespace-nowrap font-medium text-gray-900">{u.FirstName} {u.LastName}</td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{u.Email}</td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{u.DateRegistered.toLocaleDateString()}</td>
-                <td className="px-6 py-4 whitespace-nowrap">
-                  <span className={`px-2 inline-flex text-xs leading-5 font-semibold rounded-full ${u.Status === 'Active' ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'}`}>
+          <tbody>
+            {users.map((u, i) => (
+              <tr
+                key={u.UserID}
+                style={{
+                  borderBottom: i < users.length - 1 ? "1px solid #E0DCD3" : "none",
+                }}
+              >
+                <td className="px-6 py-4 font-semibold text-primary-dark text-sm">
+                  {u.FirstName} {u.LastName}
+                </td>
+                <td className="px-6 py-4 text-sm text-text-muted">{u.Email}</td>
+                <td className="px-6 py-4 text-sm text-text-muted">
+                  {u.DateRegistered.toLocaleDateString("en-US", {
+                    year: "numeric",
+                    month: "short",
+                    day: "numeric",
+                  })}
+                </td>
+                <td className="px-6 py-4">
+                  <span
+                    className="badge text-xs"
+                    style={
+                      u.Status === "Active"
+                        ? { background: "#E2F0D9", color: "#385723" }
+                        : { background: "#FCE4D6", color: "#C65911" }
+                    }
+                  >
                     {u.Status}
                   </span>
                 </td>
-                <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                  <button className="text-olive hover:text-olive-dark mr-4">View Profile</button>
-                  <button className="text-red-600 hover:text-red-900">Disable</button>
+                <td className="px-6 py-4 text-right">
+                  <div className="flex items-center justify-end gap-3">
+                    <button className="text-xs font-semibold text-accent-gold hover:underline">
+                      View Profile
+                    </button>
+                    <button className="text-xs font-semibold text-red-500 hover:underline">
+                      Disable
+                    </button>
+                  </div>
                 </td>
               </tr>
             ))}
             {users.length === 0 && (
               <tr>
-                <td colSpan={5} className="px-6 py-4 text-center text-gray-500">No customers found.</td>
+                <td colSpan={5} className="px-6 py-10 text-center text-sm text-text-muted">
+                  No customers found.
+                </td>
               </tr>
             )}
           </tbody>

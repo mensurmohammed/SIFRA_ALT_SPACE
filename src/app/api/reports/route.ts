@@ -1,9 +1,9 @@
 import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 import { getUserFromRequest } from "@/lib/auth";
+import { cleanErrorMessage } from "@/lib/error-formatter";
 
 export const dynamic = "force-dynamic";
-
 
 export async function GET(req: Request) {
   try {
@@ -12,28 +12,38 @@ export async function GET(req: Request) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
-    const today = new Date();
-    today.setHours(0, 0, 0, 0);
-
-    const [totalUsers, totalBooks, activeBorrowings, todayOrders] = await Promise.all([
-      prisma.user.count(),
-      prisma.book.count(),
-      prisma.borrowing.count({ where: { Status: "Active" } }),
+    const [orders, borrowings, inventory, events] = await Promise.all([
       prisma.order.findMany({
-        where: { OrderDate: { gte: today } }
-      })
+        orderBy: { OrderDate: "desc" },
+        take: 300,
+      }),
+      prisma.borrowing.findMany({
+        include: {
+          Copy: {
+            include: {
+              Book: { select: { Title: true } },
+            },
+          },
+          User: { select: { FirstName: true, LastName: true, Email: true } },
+        },
+        orderBy: { BorrowedAt: "desc" },
+        take: 300,
+      }),
+      prisma.inventoryItem.findMany({
+        orderBy: { CurrentStock: "asc" },
+      }),
+      prisma.event.findMany({
+        orderBy: { EventDate: "desc" },
+      }),
     ]);
 
-    const todaySales = todayOrders.reduce((acc, order) => acc + order.TotalAmount, 0);
-
     return NextResponse.json({
-      totalUsers,
-      totalBooks,
-      activeBorrowings,
-      todaySales,
-      todayOrdersCount: todayOrders.length
+      orders,
+      borrowings,
+      inventory,
+      events,
     });
   } catch (error: any) {
-    return NextResponse.json({ error: error.message }, { status: 500 });
+    return NextResponse.json({ error: cleanErrorMessage(error.message) }, { status: 500 });
   }
 }
