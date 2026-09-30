@@ -87,7 +87,7 @@ export default async function BookDetailsPage(props: { params: Promise<{ id: str
                     </span>
                   </div>
 
-                  <h1 className="font-serif font-bold text-primary-dark mb-2" style={{ fontSize: "1.875rem" }}>
+                  <h1 className="font-sans font-bold text-primary-dark mb-2" style={{ fontSize: "1.875rem" }}>
                     {book.Title}
                   </h1>
                   <p className="text-text-muted mb-6 text-base">by {book.Author}</p>

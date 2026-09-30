@@ -119,7 +119,7 @@ export default function BooksClient({ books, categories }: { books: Book[]; cate
 
                   {/* Info */}
                   <div className="p-3">
-                    <h3 className="font-serif font-bold text-primary-dark text-sm leading-snug line-clamp-2 mb-0.5">
+                    <h3 className="font-sans font-bold text-primary-dark text-sm leading-snug line-clamp-2 mb-0.5">
                       {book.Title}
                     </h3>
                     <p className="text-xs text-text-muted mb-2 line-clamp-1">by {book.Author}</p>

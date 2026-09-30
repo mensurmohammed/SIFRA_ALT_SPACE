@@ -52,12 +52,20 @@ const bookCategories = [
 ];
 
 export default async function HomePage() {
-  let menuItems: any[] = [];
+  let fetchedItems: any[] = [];
   let events: any[] = [];
 
   try {
-    [menuItems, events] = await Promise.all([
-      prisma.menuItem.findMany({ take: 3, orderBy: { Name: "asc" } }),
+    [fetchedItems, events] = await Promise.all([
+      prisma.menuItem.findMany({
+        where: {
+          OR: [
+            { Name: { contains: "French" } },
+            { Name: { contains: "Moka" } },
+            { Name: { contains: "Tea" } },
+          ],
+        },
+      }),
       prisma.event.findMany({
         where: { Hidden: false },
         take: 3,
@@ -67,6 +75,37 @@ export default async function HomePage() {
   } catch {
     // silently handle DB errors on home page
   }
+
+  const defaultMenuItems = [
+    {
+      MenuItemID: "french-press",
+      Name: "French Press Coffee",
+      Price: 90,
+      Description: "Rich, aromatic, and full-bodied coffee extracted through a classic plunger press.",
+      ImageUrl: null,
+    },
+    {
+      MenuItemID: "moka-pot",
+      Name: "Moka Pot Coffee",
+      Price: 100,
+      Description: "Intense, traditional stove-top espresso brew with a bold flavor profile.",
+      ImageUrl: null,
+    },
+    {
+      MenuItemID: "specialty-tea",
+      Name: "Specialty Tea",
+      Price: 90,
+      Description: "Freshly brewed Ethiopian herbal and black spiced tea blends.",
+      ImageUrl: null,
+    },
+  ];
+
+  // Pick French Press, Moka, and Tea specifically
+  const menuItems = [
+    fetchedItems.find((i) => i.Name.toLowerCase().includes("french")) || defaultMenuItems[0],
+    fetchedItems.find((i) => i.Name.toLowerCase().includes("moka")) || defaultMenuItems[1],
+    fetchedItems.find((i) => i.Name.toLowerCase().includes("tea")) || defaultMenuItems[2],
+  ];
 
   return (
     <main>
@@ -96,30 +135,30 @@ export default async function HomePage() {
         </div>
       </section>
 
-      {/* ─── Most Loved Coffees ─────────────────────────── */}
+      {/* ─── Café Menu ─────────────────────────── */}
       <section className="py-16 px-4 md:px-8 max-w-7xl mx-auto">
         <div className="text-center mb-10">
           <p className="section-subtitle">Crafted Selections</p>
-          <h2 className="section-title">Our Most Loved Coffees</h2>
+          <h2 className="section-title">Our Café Menu</h2>
         </div>
 
-        {menuItems.length > 0 ? (
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {menuItems.map((item) => (
-              <div
-                key={item.MenuItemID}
-                className="bg-white rounded-[12px] overflow-hidden border border-border-color"
-                style={{ boxShadow: "0 2px 8px rgba(53,34,20,0.05)" }}
-              >
-                <div className="h-48 bg-gradient-to-br from-amber-50 to-orange-50 flex items-center justify-center">
-                  {item.ImageUrl ? (
-                    <img src={item.ImageUrl} alt={item.Name} className="w-full h-full object-cover" />
-                  ) : (
-                    <Coffee className="w-16 h-16 text-accent-gold opacity-40" strokeWidth={1} />
-                  )}
-                </div>
-                <div className="p-4">
-                  <div className="flex items-center justify-between mb-3">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {menuItems.map((item) => (
+            <div
+              key={item.MenuItemID || item.Name}
+              className="bg-white rounded-[12px] overflow-hidden border border-border-color flex flex-col justify-between"
+              style={{ boxShadow: "0 2px 8px rgba(53,34,20,0.05)" }}
+            >
+              <div className="h-48 bg-gradient-to-br from-amber-50 to-orange-50 flex items-center justify-center">
+                {item.ImageUrl ? (
+                  <img src={item.ImageUrl} alt={item.Name} className="w-full h-full object-cover" />
+                ) : (
+                  <Coffee className="w-16 h-16 text-accent-gold opacity-40" strokeWidth={1} />
+                )}
+              </div>
+              <div className="p-5 flex flex-col flex-1 justify-between">
+                <div>
+                  <div className="flex items-center justify-between mb-2">
                     <h3 className="font-serif font-bold text-primary-dark text-lg">{item.Name}</h3>
                     <span className="font-semibold text-sm" style={{ color: "#D4A359" }}>
                       {item.Price} ETB
@@ -128,45 +167,18 @@ export default async function HomePage() {
                   {item.Description && (
                     <p className="text-sm text-text-muted mb-4 line-clamp-2 italic">{item.Description}</p>
                   )}
-                  <button
-                    className="w-full py-2.5 rounded-[6px] text-sm font-semibold transition-colors"
-                    style={{ background: "#F7F4EE", color: "#352214" }}
-                  >
-                    Add to Order
-                  </button>
                 </div>
+                <Link
+                  href="/cafe"
+                  className="w-full py-2.5 rounded-[6px] text-sm font-semibold text-center transition-colors block"
+                  style={{ background: "#F7F4EE", color: "#352214" }}
+                >
+                  Order in Café
+                </Link>
               </div>
-            ))}
-          </div>
-        ) : (
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {["Habesha Blend", "Yirgacheffe Pour-Over", "Spiced Macchiato"].map((name, i) => (
-              <div
-                key={name}
-                className="bg-white rounded-[12px] overflow-hidden border border-border-color"
-                style={{ boxShadow: "0 2px 8px rgba(53,34,20,0.05)" }}
-              >
-                <div className="h-48 bg-gradient-to-br from-amber-50 to-orange-50 flex items-center justify-center">
-                  <Coffee className="w-16 h-16 text-accent-gold opacity-40" strokeWidth={1} />
-                </div>
-                <div className="p-4">
-                  <div className="flex items-center justify-between mb-2">
-                    <h3 className="font-serif font-bold text-primary-dark">{name}</h3>
-                    <span className="font-semibold text-sm" style={{ color: "#D4A359" }}>
-                      {75 + i * 15} ETB
-                    </span>
-                  </div>
-                  <button
-                    className="w-full py-2.5 rounded-[6px] text-sm font-semibold mt-3"
-                    style={{ background: "#F7F4EE", color: "#352214" }}
-                  >
-                    Add to Order
-                  </button>
-                </div>
-              </div>
-            ))}
-          </div>
-        )}
+            </div>
+          ))}
+        </div>
 
         <div className="text-center mt-10">
           <Link
