@@ -28,16 +28,43 @@ export default function AuditLogsPage() {
   };
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 min-w-0 max-w-full">
       <div>
-        <h1 className="font-serif font-bold text-primary-dark mb-1" style={{ fontSize: "2rem" }}>
+        <h1 className="font-serif font-bold text-primary-dark mb-1 text-2xl sm:text-3xl">
           Audit Logs
         </h1>
-        <p className="text-text-muted text-sm">Security and activity tracking log.</p>
+        <p className="text-text-muted text-xs sm:text-sm">Security and activity tracking log.</p>
       </div>
 
+      {/* Mobile Card List */}
+      <div className="md:hidden space-y-3">
+        {logs.map((log, i) => (
+          <div
+            key={i}
+            className="bg-white rounded-[12px] p-4 border border-border-color space-y-2 shadow-xs"
+          >
+            <div className="flex items-start justify-between gap-2">
+              <span className="font-semibold text-primary-dark text-xs break-all">
+                {log.user}
+              </span>
+              <span
+                className="px-2.5 py-0.5 rounded-full text-[10px] font-bold shrink-0"
+                style={typeBadge(log.type)}
+              >
+                {log.action}
+              </span>
+            </div>
+            <p className="text-xs text-text-muted">{log.details}</p>
+            <div className="pt-2 border-t border-gray-100 text-[11px] text-gray-400">
+              {log.timestamp.toLocaleString()}
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {/* Desktop Table Card */}
       <div
-        className="bg-white rounded-[12px] border border-border-color overflow-hidden"
+        className="hidden md:block bg-white rounded-[12px] border border-border-color overflow-hidden"
         style={{ boxShadow: "0 2px 8px rgba(53,34,20,0.05)" }}
       >
         <table className="min-w-full">

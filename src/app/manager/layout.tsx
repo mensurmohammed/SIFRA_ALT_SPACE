@@ -15,9 +15,9 @@ export default async function ManagerLayout({ children }: { children: React.Reac
     redirect("/login");
 
   return (
-    <div className="min-h-screen flex" style={{ background: "#F7F4EE" }}>
+    <div className="min-h-screen flex flex-col md:flex-row" style={{ background: "#F7F4EE" }}>
       <ManagerSidebar />
-      <main className="flex-1 p-8 text-primary-dark overflow-y-auto h-screen">
+      <main className="flex-1 p-4 md:p-8 text-primary-dark overflow-y-auto md:h-screen">
         {children}
       </main>
     </div>

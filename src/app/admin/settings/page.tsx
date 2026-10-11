@@ -47,58 +47,58 @@ export default function SystemSettingsPage() {
   if (loading) return <div className="animate-pulse h-32 bg-border-color rounded-[12px] max-w-3xl"></div>;
 
   return (
-    <div className="max-w-3xl space-y-6">
+    <div className="max-w-3xl space-y-6 min-w-0 max-w-full sm:max-w-3xl">
       <div>
-        <h1 className="font-serif font-bold text-primary-dark mb-1" style={{ fontSize: "2rem" }}>
+        <h1 className="font-serif font-bold text-primary-dark mb-1 text-2xl sm:text-3xl">
           System Settings
         </h1>
-        <p className="text-text-muted text-sm">Configure library rules and café operations.</p>
+        <p className="text-text-muted text-xs sm:text-sm">Configure library rules and café operations.</p>
       </div>
 
       <div
-        className="bg-white rounded-[12px] border border-border-color p-8 space-y-8"
+        className="bg-white rounded-[12px] border border-border-color p-4 sm:p-8 space-y-6 sm:space-y-8"
         style={{ boxShadow: "0 2px 8px rgba(53,34,20,0.05)" }}
       >
         {/* Library Rules */}
         <div>
-          <h2 className="font-serif font-bold text-primary-dark text-lg mb-5 pb-3 border-b border-border-color">
+          <h2 className="font-serif font-bold text-primary-dark text-base sm:text-lg mb-4 sm:mb-5 pb-3 border-b border-border-color">
             Library Rules
           </h2>
           <div className="space-y-4">
-            <div className="flex justify-between items-center">
-              <span className="text-sm font-semibold text-primary-dark">Maximum Borrowing Duration (Days)</span>
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 sm:gap-4 py-1 border-b sm:border-b-0 border-gray-100 pb-3 sm:pb-0">
+              <label className="text-sm font-semibold text-primary-dark">Maximum Borrowing Duration (Days)</label>
               <input
                 type="number"
                 value={settings.max_borrowing_duration_days}
                 onChange={(e) => handleChange("max_borrowing_duration_days", e.target.value)}
-                className="border border-border-color rounded-[6px] p-2 w-24 text-center text-sm text-primary-dark focus:outline-none focus:ring-2 focus:ring-accent-gold"
+                className="border border-border-color rounded-[6px] p-2.5 sm:p-2 w-full sm:w-28 text-left sm:text-center text-base sm:text-sm text-primary-dark focus:outline-none focus:ring-2 focus:ring-accent-gold min-h-[44px] sm:min-h-0"
               />
             </div>
-            <div className="flex justify-between items-center">
-              <span className="text-sm font-semibold text-primary-dark">Maximum Books Per Customer</span>
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 sm:gap-4 py-1 border-b sm:border-b-0 border-gray-100 pb-3 sm:pb-0">
+              <label className="text-sm font-semibold text-primary-dark">Maximum Books Per Customer</label>
               <input
                 type="number"
                 value={settings.max_books_per_customer}
                 onChange={(e) => handleChange("max_books_per_customer", e.target.value)}
-                className="border border-border-color rounded-[6px] p-2 w-24 text-center text-sm text-primary-dark focus:outline-none focus:ring-2 focus:ring-accent-gold"
+                className="border border-border-color rounded-[6px] p-2.5 sm:p-2 w-full sm:w-28 text-left sm:text-center text-base sm:text-sm text-primary-dark focus:outline-none focus:ring-2 focus:ring-accent-gold min-h-[44px] sm:min-h-0"
               />
             </div>
-            <div className="flex justify-between items-center">
-              <span className="text-sm font-semibold text-primary-dark">Late Return Fine (ETB per day)</span>
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 sm:gap-4 py-1 border-b sm:border-b-0 border-gray-100 pb-3 sm:pb-0">
+              <label className="text-sm font-semibold text-primary-dark">Late Return Fine (ETB per day)</label>
               <input
                 type="number"
                 value={settings.late_return_fine}
                 onChange={(e) => handleChange("late_return_fine", e.target.value)}
-                className="border border-border-color rounded-[6px] p-2 w-24 text-center text-sm text-primary-dark focus:outline-none focus:ring-2 focus:ring-accent-gold"
+                className="border border-border-color rounded-[6px] p-2.5 sm:p-2 w-full sm:w-28 text-left sm:text-center text-base sm:text-sm text-primary-dark focus:outline-none focus:ring-2 focus:ring-accent-gold min-h-[44px] sm:min-h-0"
               />
             </div>
-            <div className="flex justify-between items-center">
-              <span className="text-sm font-semibold text-primary-dark">Quarter-Hour Borrowing Rate (Birr)</span>
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 sm:gap-4 py-1">
+              <label className="text-sm font-semibold text-primary-dark">Quarter-Hour Borrowing Rate (Birr)</label>
               <input
                 type="number"
                 value={settings.borrowing_rate_quarter_hour}
                 onChange={(e) => handleChange("borrowing_rate_quarter_hour", e.target.value)}
-                className="border border-border-color rounded-[6px] p-2 w-24 text-center text-sm text-primary-dark focus:outline-none focus:ring-2 focus:ring-accent-gold"
+                className="border border-border-color rounded-[6px] p-2.5 sm:p-2 w-full sm:w-28 text-left sm:text-center text-base sm:text-sm text-primary-dark focus:outline-none focus:ring-2 focus:ring-accent-gold min-h-[44px] sm:min-h-0"
               />
             </div>
           </div>
@@ -106,26 +106,29 @@ export default function SystemSettingsPage() {
 
         {/* Café Settings */}
         <div>
-          <h2 className="font-serif font-bold text-primary-dark text-lg mb-5 pb-3 border-b border-border-color">
+          <h2 className="font-serif font-bold text-primary-dark text-base sm:text-lg mb-4 sm:mb-5 pb-3 border-b border-border-color">
             Café Settings
           </h2>
           <div className="space-y-4">
-            <div className="flex justify-between items-center">
-              <span className="text-sm font-semibold text-primary-dark">Accept Digital Payments</span>
+            <div className="flex items-center justify-between gap-4 py-1">
+              <label htmlFor="accept_digital_payments" className="text-sm font-semibold text-primary-dark cursor-pointer">
+                Accept Digital Payments
+              </label>
               <input 
+                id="accept_digital_payments"
                 type="checkbox" 
                 checked={settings.accept_digital_payments === "true"} 
                 onChange={(e) => handleChange("accept_digital_payments", e.target.checked ? "true" : "false")}
-                className="h-5 w-5 accent-accent-gold" 
+                className="h-5 w-5 accent-accent-gold cursor-pointer" 
               />
             </div>
-            <div className="flex justify-between items-center">
-              <span className="text-sm font-semibold text-primary-dark">Tax Rate (%)</span>
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 sm:gap-4 py-1">
+              <label className="text-sm font-semibold text-primary-dark">Tax Rate (%)</label>
               <input
                 type="number"
                 value={settings.tax_rate}
                 onChange={(e) => handleChange("tax_rate", e.target.value)}
-                className="border border-border-color rounded-[6px] p-2 w-24 text-center text-sm text-primary-dark focus:outline-none focus:ring-2 focus:ring-accent-gold"
+                className="border border-border-color rounded-[6px] p-2.5 sm:p-2 w-full sm:w-28 text-left sm:text-center text-base sm:text-sm text-primary-dark focus:outline-none focus:ring-2 focus:ring-accent-gold min-h-[44px] sm:min-h-0"
               />
             </div>
           </div>
@@ -133,7 +136,7 @@ export default function SystemSettingsPage() {
 
         <button
           onClick={handleSave}
-          className="w-full py-3 rounded-[6px] font-semibold text-sm transition-opacity hover:opacity-90"
+          className="w-full py-3.5 sm:py-3 rounded-[6px] font-semibold text-sm transition-opacity hover:opacity-90 min-h-[44px] flex items-center justify-center shadow-xs"
           style={{ background: "#352214", color: "#FFFFFF" }}
         >
           Save Settings

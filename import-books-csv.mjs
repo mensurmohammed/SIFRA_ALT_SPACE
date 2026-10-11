@@ -86,203 +86,149 @@ da5dc714-3308-48c4-ae45-17b304a5d594,9781861979780,Open Library,33 Strategies of
 0d193412-d383-40e4-8d5e-495258299a6b,9789999053297,Not Found,,,,,,,https://covers.openlibrary.org/b/isbn/9789999053297-L.jpg,,
 295fdb51-a151-4cf8-a9f0-67d1035be44b,9780241257531,Open Library,Six Thinking Hats,"Edward de Bono, Feng yang","Creative ability, Thought and thinking, Problem solving, Creative thinking, Reasoning",2017,,,https://covers.openlibrary.org/b/isbn/9780241257531-L.jpg,,
 77a14e11-7493-4cb8-8f8f-5bc2ea4ead21,5581598146189,Not Found,,,,,,,https://covers.openlibrary.org/b/isbn/5581598146189-L.jpg,,
-fd5a1287-adc5-4d61-b62a-144a863f0e5b,9781915261472,Google Books,Tips for Teachers: 400+ Ideas to Improve Your Teaching,Craig Barton,Education,2023,en,"Teaching is complex. But there are simple ideas we can enact to help our teaching be more effective. This book contains over 400 such ideas. The ideas come from two sources. First, from the wonderful guests on my Tips for Teachers podcast - education heavyweights such as Dylan Wiliam, Daisy Christodoulou and Tom Sherrington, as well as talented teachers who are not household names but have so much wisdom to share. Then there''s what I have learned from working with amazing teachers and students in hundreds of schools around the world. Inside you will find 22 ideas to enhance mini-whiteboard use, 15 ideas to improve the start of your lesson, 14 ideas to help make Silent Teacher effective, seven ways to respond if a student says they don''t know, and lots, lots more. Each idea can be implemented the very next time you step into a classroom. So, whatever your level of experience, subject or phase, there are plenty of ideas in this book to help take your teaching to the next level. Book contents Chapter 1: How to use this book Tip 1. How to use this book to improve your teaching Tip 2. How to give yourself the best chance of making a lasting change Chapter 2: Habits and routines Why are habits and routines important? Tip 3. Eight ideas to help introduce a routine Tip 4. Beware of the Valley of Latent Potential Tip 5. Two ideas to help a routine stick Tip 6. Develop a set of high-value activity structures Tip 7. Six ideas to help establish positive norms in your classroom Tip 8. Four types of words to consider removing from your teaching vocabulary Chapter 3: The means of participation A challenge Tip 9. Front-load the means of participation Tip 10. Ten ideas to improve Cold Call Tip 11. Eight reasons to strive for mass participation more frequently Tip 12. Twenty-two ideas to improve the use of mini-whiteboards Tip 13. Five ideas to improve the use of voting systems Tip 14. Nine ideas to improve Call and Response Tip 15. Fifteen ideas to improve Partner Talk Tip 16. Six ideas to improve group work Tip 17. Use the means of participation holy trinity Tip 18. Never rely on a mental note Tip 19. The best tool for the long term might not be the best tool for now Chapter 4: Checking for understanding Tip 20. Think of questions as a check for misunderstanding Tip 21. Use the temptation to ask for self-report as a cue to ask a better question Tip 22. Lengthen wait times after asking a question Tip 23. Lengthen wait times after an answer Tip 24. Ten types of questions to ask when checking for understanding Tip 25. Try these three frameworks for learner-generated examples Tip 26. Three ways to use diagnostic questions to check for understanding Tip 27. Provide scaffolds for verbal responses Tip 28. Six key times to check for understanding Tip 29. Ten ideas to improve Exit Tickets Tip 30. Pick the student least likely to know Tip 31. Start with whoever got 8 out of 10 Tip 32. Ten ideas to help create a culture of error Tip 33. Three ideas to encourage students to ask questions Chapter 5: Responsive teaching Tip 34. Trick your students to test if they really understand Tip 35. Never round-up Tip 36. Six ideas if a student says ''I don''t know'' Tip 37. What to do when some students understand and some don''t Tip 38. What to do when some students still don''t understand Tip 39. How students can own and record classroom discussions Tip 40. Share students'' work with the rest of the class Chapter 6: Planning Tip 41. Seven ideas to improve a scheme of work Tip 42. Six ideas to help start the planning process Tip 43. Plan to do less, but better Tip 44. Ask yourself: ''What are my students likely to be thinking about?'' Tip 45. Write out ideal student responses Tip 46. Four ideas to help you plan for and respond to errors Tip 47. Two ideas to help teachers engage in Deep Work Tip 48. Aim to close the loop when sending an email Chapter 7: Prior knowledge Tip 49. Plan relevant prior knowledge Tip 50. Prioritise relevant prior knowledge Tip 51. Assess relevant prior knowledge Tip 52. Respond to prior knowledge assessment Tip 53. Assess relevant prior knowledge for each idea, not for the whole sequence Chapter 8: Explanations, modelling and worked examples Tip 54. Five ideas to show students why what we are learning today matters Tip 55. Use related examples and non-examples to explain technical language Tip 56. Fourteen ideas to improve the explanation of a concept Tip 57. Teach decision making separately Tip 58. Five ideas to improve our choice of examples Tip 59. Model techniques live Tip 60. Use a teacher worked-examples book Tip 61. Use student worked-examples books Tip 62. Make use of the power of Example-Problem Pairs Tip 63. Fourteen ideas to improve Silent Teacher Tip 64. Use self-explanation prompts to help develop your students'' understanding Tip 65. Six ideas to improve ''copy down the worked example'' Tip 66. Vary the means of participation for the We Do Tip 67. Three errors to avoid with the Your Turn questions Tip 68. Reflect after a worked example Tip 69. Beware of seductive details Chapter 9: Student practice Tip 70. Eight ideas to improve student practice time Tip 71. How to harness the hidden power of interleaving Tip 72. Consider using Intelligent Practice Tip 73. Consider using ''no-number'' questions Tip 74. Nine ideas to help you observe student work with a purpose Tip 75. Occasionally let students do work in someone else''s book Chapter 10: Memory and retrieval Retrieval opportunities Tip 76. Show your students the Forgetting Curve Tip 77. Show your students the path to high storage and retrieval strength Tip 78. Show your students the limits of working memory Tip 79. Show your students how long-term memory helps thinking Tip 80. Show your students that being familiar with something is not the same as knowing it Tip 81. Ensure you provide retrieval opportunities for all content Tip 82. When designing retrieval opportunities, aim for 80% Tip 83. Vary the types of retrieval questions you ask Tip 84. Consider providing prompts and cues during retrieval opportunities Tip 85. Get your students to assign confidence scores to their answers Tip 86. Make corrections quizzable Tip 87. Twenty-one ideas to improve your Low-Stakes Quizzes Tip 88. Fifteen ideas to improve the Do Now Tip 89. Consider using Trello to help organise the disorganised Chapter 11: Homework, marking and feedback Tip 90. Make homework feed into lessons Tip 91. Eight ideas to improve homework Tip 92. Two things to check if homework or test scores are a surprise Tip 93. Be careful how you respond to ''silly'' mistakes Tip 94. Turn feedback into detective work Tip 95. Consider recording verbal feedback Tip 96. Twelve ideas to improve whole-class feedback Chapter 12: Improving as a teacher Tip 97. Find the expertise within your team Tip 98. Five different people to learn from Tip 99. Revisit education books and podcast episodes Tip 100. Four things to consider when trying something new Tip 101. Five ideas to help tackle the negativity radio Tip 102. Consider slowing down your career Tip 103. Sixteen ideas to improve the delivery of CPD Tip 104. Micro tips Tip 105. If you want more tips...",https://books.google.com/books/content?id=SyNzzwEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api,,
-a2f79cba-bb4b-47ae-99d2-45f8ff36f77f,9781853260155,Open Library,The picture of Dorian Gray,Oscar Wilde,"British and irish fiction (fictional works by one author), Conduct of life, fiction, Fantasy fiction, Appearance (Philosophy), Fiction",1992,,"""Complete and unabridged.""
+fd5a1287-adc5-4d61-b62a-144a863f0e5b,9781915261472,Google Books,Tips for Teachers: 400+ Ideas to Improve Your Teaching,Craig Barton,Education,2023,en,"Teaching is complex. But there are simple ideas we can enact to help our teaching be more effective. This book contains over 400 such ideas. The ideas come from two sources. First, from the wonderful guests on my Tips for Teachers podcast - education heavyweights such as Dylan Wiliam, Daisy Christodoulou and Tom Sherrington, as well as talented teachers who are not household names but have so much wisdom to share. Then there''s what I have learned from working with amazing teachers and stude`;
 
-""The text is taken from the Paris edition published in Montmartre, 1908.""
-
-Includes bibliography.",https://covers.openlibrary.org/b/isbn/9781853260155-L.jpg,,
-ec696199-b220-42d4-80c8-cb3a996c5ddd,9788119172566,Not Found,,,,,,,https://covers.openlibrary.org/b/isbn/9788119172566-L.jpg,,
-e3c25945-1bc8-43b0-b1bc-0049a26cbc63,9788119172351,Not Found,,,,,,,https://covers.openlibrary.org/b/isbn/9788119172351-L.jpg,,
-5ae1778c-0e3a-4716-aa43-6d6e6feb0d8f,9788119172290,Not Found,,,,,,,https://covers.openlibrary.org/b/isbn/9788119172290-L.jpg,,
-`;
-
-// Simple CSV parser supporting quoted strings and multiline fields
-function parseCSV(text) {
-  const lines = text.trim().split("\n");
+function parseCSVLine(text) {
   const result = [];
-  let curRow = [];
-  let curVal = "";
+  let cur = "";
   let inQuotes = false;
-
   for (let i = 0; i < text.length; i++) {
-    const char = text[i];
-    const nextChar = text[i + 1];
-
-    if (char === '"') {
-      if (inQuotes && nextChar === '"') {
-        curVal += '"';
+    const c = text[i];
+    if (c === '"') {
+      if (inQuotes && text[i + 1] === '"') {
+        cur += '"';
         i++;
       } else {
         inQuotes = !inQuotes;
       }
-    } else if (char === ',' && !inQuotes) {
-      curRow.push(curVal);
-      curVal = "";
-    } else if ((char === '\r' || char === '\n') && !inQuotes) {
-      if (char === '\r' && nextChar === '\n') i++;
-      curRow.push(curVal);
-      curVal = "";
-      if (curRow.some(cell => cell.trim().length > 0)) {
-        result.push(curRow);
-      }
-      curRow = [];
+    } else if (c === "," && !inQuotes) {
+      result.push(cur.trim());
+      cur = "";
     } else {
-      curVal += char;
+      cur += c;
     }
   }
-  if (curVal || curRow.length > 0) {
-    curRow.push(curVal);
-    result.push(curRow);
-  }
+  result.push(cur.trim());
   return result;
 }
 
 async function main() {
-  const parsed = parseCSV(csvData);
-  const headers = parsed[0];
-  const rows = parsed.slice(1);
+  const lines = csvData.trim().split(/\r?\n/);
+  const rows = lines.slice(1);
 
   console.log(`Found ${rows.length} records to import.`);
 
-  // First create a default Category if needed
+  // 1. Ensure "Uncategorized" category exists
   let defaultCategory = await prisma.bookCategory.findFirst({
-    where: { CategoryName: "General" },
+    where: { CategoryName: "Uncategorized" },
   });
 
   if (!defaultCategory) {
     defaultCategory = await prisma.bookCategory.create({
-      data: { CategoryName: "General", Description: "General collection" },
+      data: { CategoryName: "Uncategorized" },
     });
   }
 
-  const categoryCache = new Map();
-  categoryCache.set("general", defaultCategory.CategoryID);
+  let importedCount = 0;
 
-  let updatedCount = 0;
-  let createdCount = 0;
-  let skippedCount = 0;
+  for (const line of rows) {
+    if (!line.trim()) continue;
+    const cols = parseCSVLine(line);
 
-  for (const row of rows) {
-    const bookID = row[0]?.trim();
-    const isbn = row[1]?.trim();
-    const source = row[2]?.trim();
-    let title = row[3]?.trim();
-    let author = row[4]?.trim();
-    let categoryName = row[5]?.trim();
-    const pubYearStr = row[6]?.trim();
-    const language = row[7]?.trim();
-    const description = row[8]?.trim();
-    const coverImage = row[9]?.trim();
-    const edition = row[10]?.trim();
-    const shelfLocation = row[11]?.trim();
+    const [
+      bookId,
+      isbn,
+      source,
+      title,
+      author,
+      rawCategory,
+      pubYearStr,
+      language,
+      description,
+      coverImage,
+      edition,
+      shelfLocation,
+    ] = cols;
 
-    if (!isbn && !bookID) {
-      skippedCount++;
-      continue;
-    }
+    if (!title) continue;
 
-    // Clean up category name (take first if comma-separated)
-    if (categoryName && categoryName.includes(",")) {
-      categoryName = categoryName.split(",")[0].trim();
-    }
-    if (!categoryName) {
-      categoryName = "General";
-    }
+    // Pick first category if comma-separated
+    const catName = rawCategory ? rawCategory.split(",")[0].trim() : "";
 
-    let categoryID = categoryCache.get(categoryName.toLowerCase());
-    if (!categoryID) {
-      let cat = await prisma.bookCategory.findFirst({
-        where: { CategoryName: { equals: categoryName, mode: "insensitive" } },
+    let categoryId = defaultCategory.CategoryID;
+
+    if (catName) {
+      let category = await prisma.bookCategory.findFirst({
+        where: { CategoryName: catName },
       });
-      if (!cat) {
-        cat = await prisma.bookCategory.create({
-          data: { CategoryName: categoryName },
+
+      if (!category) {
+        category = await prisma.bookCategory.create({
+          data: { CategoryName: catName },
         });
       }
-      categoryID = cat.CategoryID;
-      categoryCache.set(categoryName.toLowerCase(), categoryID);
+      categoryId = category.CategoryID;
     }
 
-    // Clean up Title & Author fallbacks
-    if (!title || title === "Not Found" || title === '""') {
-      title = isbn ? `Book (${isbn})` : `Book (${bookID.slice(0, 8)})`;
-    }
-    if (!author || author === '""') {
-      author = "Unknown Author";
-    }
+    const pubYear = pubYearStr ? parseInt(pubYearStr, 10) : null;
 
-    const pubYear = pubYearStr && !isNaN(parseInt(pubYearStr)) ? parseInt(pubYearStr) : null;
-
-    // Check if book exists by ISBN or BookID
-    let existingBook = null;
-    if (isbn) {
-      existingBook = await prisma.book.findFirst({ where: { ISBN: isbn } });
-    }
-    if (!existingBook && bookID) {
-      existingBook = await prisma.book.findUnique({ where: { BookID: bookID } });
-    }
-
-    const bookData = {
-      ISBN: isbn || null,
-      Title: title,
-      Author: author,
-      CategoryID: categoryID,
-      PublicationYear: pubYear,
-      Language: language || null,
-      Description: description || null,
-      CoverImage: coverImage || null,
-      Edition: edition || null,
-      ShelfLocation: shelfLocation || null,
-    };
-
-    let targetBookId = "";
-
-    if (existingBook) {
-      // Overwrite existing book
-      await prisma.book.update({
-        where: { BookID: existingBook.BookID },
-        data: bookData,
-      });
-      targetBookId = existingBook.BookID;
-      updatedCount++;
-    } else {
-      // Create new book
-      const newBook = await prisma.book.create({
-        data: {
-          BookID: bookID || undefined,
-          ...bookData,
-        },
-      });
-      targetBookId = newBook.BookID;
-      createdCount++;
-    }
-
-    // Ensure at least one copy exists for this book
-    const existingCopiesCount = await prisma.bookCopy.count({
-      where: { BookID: targetBookId },
+    // Create or update the Book record
+    const bookRecord = await prisma.book.upsert({
+      where: { BookID: bookId },
+      update: {
+        ISBN: isbn || null,
+        Title: title,
+        Author: author || "Unknown Author",
+        CategoryID: categoryId,
+        PublicationYear: isNaN(pubYear) ? null : pubYear,
+        Language: language || null,
+        Edition: edition || null,
+        Description: description || null,
+        CoverImage: coverImage || null,
+        ShelfLocation: shelfLocation || null,
+      },
+      create: {
+        BookID: bookId,
+        ISBN: isbn || null,
+        Title: title,
+        Author: author || "Unknown Author",
+        CategoryID: categoryId,
+        PublicationYear: isNaN(pubYear) ? null : pubYear,
+        Language: language || null,
+        Edition: edition || null,
+        Description: description || null,
+        CoverImage: coverImage || null,
+        ShelfLocation: shelfLocation || null,
+      },
     });
 
-    if (existingCopiesCount === 0) {
-      const barcode = `BC-${isbn || targetBookId.slice(0, 8)}-1`;
+    // Ensure at least one BookCopy exists so it can be borrowed/managed
+    const existingCopy = await prisma.bookCopy.findFirst({
+      where: { BookID: bookRecord.BookID },
+    });
+
+    if (!existingCopy) {
+      const generatedBarcode = `BC-${bookRecord.BookID.substring(0, 8).toUpperCase()}`;
       await prisma.bookCopy.create({
         data: {
-          BookID: targetBookId,
-          Barcode: barcode,
-          Status: "Available",
+          BookID: bookRecord.BookID,
+          Barcode: generatedBarcode,
           Condition: "Good",
+          Status: "Available",
         },
       });
     }
+
+    importedCount++;
   }
 
-  console.log(`Import Finished!`);
-  console.log(`Created: ${createdCount}, Overwritten: ${updatedCount}, Skipped: ${skippedCount}`);
+  console.log(`Successfully imported ${importedCount} books!`);
 }
 
 main()
   .catch((e) => {
     console.error("Import error:", e);
+    process.exit(1);
   })
   .finally(async () => {
     await prisma.$disconnect();

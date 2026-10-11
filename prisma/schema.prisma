@@ -17,6 +17,7 @@ model User {
   PasswordHash   String
   Role           String    // Administrator, Manager, Customer
   Address        String?
+  ProfileImage   String?
   Status         String    @default("Active")
   DateRegistered DateTime  @default(now())
   CreatedAt      DateTime  @default(now())
@@ -102,6 +103,7 @@ model MenuItem {
   Name         String
   Description  String?
   Price        Float
+  ImageUrl     String?
   Status       String   @default("Available") // Available, Unavailable
   CreatedAt    DateTime @default(now())
   UpdatedAt    DateTime @updatedAt
@@ -195,6 +197,7 @@ model Event {
   EndTime         String
   Price           Float    @default(0)
   MaxParticipants Int      @default(0)
+  CoverImage      String?
   Status          String   @default("Upcoming")
   Hidden          Boolean  @default(false)
   CreatedAt       DateTime @default(now())
