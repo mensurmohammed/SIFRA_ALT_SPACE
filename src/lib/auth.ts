@@ -21,6 +21,14 @@ export async function verifyJwt(token: string) {
 }
 
 export async function getUserFromRequest(req: Request) {
+  // 1. Try Authorization: Bearer <token> first (Flutter client)
+  const authHeader = req.headers.get('authorization') || '';
+  if (authHeader.startsWith('Bearer ')) {
+    const token = authHeader.slice(7);
+    const payload = await verifyJwt(token);
+    if (payload) return payload;
+  }
+  // 2. Fall back to auth_token cookie (browser)
   const cookieHeader = req.headers.get('cookie') || '';
   const match = cookieHeader.match(/auth_token=([^;]+)/);
   if (!match) return null;

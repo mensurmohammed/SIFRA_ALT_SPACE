@@ -40,3 +40,8 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 prisma/*.db
+# Flutter ignored files
+sifra_manager/.dart_tool/
+sifra_manager/build/
+sifra_manager/.pub/
+sifra_manager/.pub-cache/
