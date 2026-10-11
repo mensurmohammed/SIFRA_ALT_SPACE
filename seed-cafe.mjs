@@ -1,33 +1,25 @@
-import { PrismaClient } from '@prisma/client';
-
-const prisma = new PrismaClient();
-
 async function main() {
-  console.log('Clearing old products...');
-  await prisma.product.deleteMany({});
+  console.log('Clearing old inventory links and items...');
+  // 1. Delete the links first to satisfy the database rules
+  await prisma.menuItemInventory.deleteMany({});
+  await prisma.menuItem.deleteMany({});
+  
+  // 2. Now it is perfectly safe to delete the inventory items!
+  await prisma.inventoryItem.deleteMany({});
 
-  console.log('Adding new products...');
-  await prisma.product.createMany({
+  console.log('Adding new products to inventory...');
+  await prisma.inventoryItem.createMany({
     data: [
-      { ProductName: 'French Press Coffee', Description: 'Rich and full-bodied coffee.', SellingPrice: 60, CurrentStock: 100 },
-      { ProductName: 'Moka Pot Coffee', Description: 'Strong, espresso-like traditional coffee.', SellingPrice: 50, CurrentStock: 100 },
-      { ProductName: 'Tea', Description: 'Hot spiced tea.', SellingPrice: 30, CurrentStock: 150 },
-      { ProductName: 'Water', Description: 'Bottled mineral water.', SellingPrice: 20, CurrentStock: 200 },
-      { ProductName: 'Softdrink', Description: 'Assorted sodas.', SellingPrice: 40, CurrentStock: 150 },
-      { ProductName: 'Peanuts', Description: 'Roasted peanuts snack.', SellingPrice: 35, CurrentStock: 80 },
-      { ProductName: 'Kolo', Description: 'Roasted barley mix.', SellingPrice: 40, CurrentStock: 100 },
-      { ProductName: 'Dube', Description: 'Traditional spiced bread.', SellingPrice: 50, CurrentStock: 50 },
+      { Name: 'French Press Coffee', CurrentStock: 100, Unit: 'cups' },
+      { Name: 'Moka Pot Coffee', CurrentStock: 100, Unit: 'cups' },
+      { Name: 'Tea', CurrentStock: 150, Unit: 'cups' },
+      { Name: 'Water', CurrentStock: 200, Unit: 'bottles' },
+      { Name: 'Softdrink', CurrentStock: 150, Unit: 'cans' },
+      { Name: 'Peanuts', CurrentStock: 80, Unit: 'bags' },
+      { Name: 'Kolo', CurrentStock: 100, Unit: 'portions' },
+      { Name: 'Dube', CurrentStock: 50, Unit: 'pieces' },
     ]
   });
 
   console.log('Seeding finished.');
 }
-
-main()
-  .catch((e) => {
-    console.error(e);
-    process.exit(1);
-  })
-  .finally(async () => {
-    await prisma.$disconnect();
-  });
