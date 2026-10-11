@@ -38,14 +38,15 @@ export async function POST(request: NextRequest) {
     });
 
     const response = NextResponse.json({
-      message: "Logged in",
-      user: {
-        id: user.UserID,
-        email: user.Email,
-        role: user.Role,
-        name: `${user.FirstName} ${user.LastName}`
-      }
-    });
+  message: "Logged in",
+  token,  // ← NEW: Flutter reads this; browsers ignore it
+  user: {
+    id: user.UserID,
+    email: user.Email,
+    role: user.Role,
+    name: `${user.FirstName} ${user.LastName}`
+  }
+});
 
     response.cookies.set("auth_token", token, {
       httpOnly: true,
