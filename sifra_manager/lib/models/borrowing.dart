@@ -12,11 +12,11 @@ class BorrowingUser {
   });
 
   factory BorrowingUser.fromJson(Map<String, dynamic> j) => BorrowingUser(
-        userId: (j['UserID'] as String?) ?? '',
-        firstName: (j['FirstName'] as String?) ?? '',
-        lastName: (j['LastName'] as String?) ?? '',
-        email: (j['Email'] as String?) ?? '',
-      );
+    userId: (j['UserID'] as String?) ?? '',
+    firstName: (j['FirstName'] as String?) ?? '',
+    lastName: (j['LastName'] as String?) ?? '',
+    email: (j['Email'] as String?) ?? '',
+  );
 
   String get fullName => '$firstName $lastName'.trim();
 }
@@ -34,12 +34,12 @@ class BorrowingBook {
     this.coverImage,
   });
 
-    factory BorrowingBook.fromJson(Map<String, dynamic> j) => BorrowingBook(
-        bookId: (j['BookID'] as String?) ?? '',
-        title: (j['Title'] as String?) ?? 'Untitled',
-        author: (j['Author'] as String?) ?? 'Unknown',
-        coverImage: j['CoverImage'] as String?,
-      );
+  factory BorrowingBook.fromJson(Map<String, dynamic> j) => BorrowingBook(
+    bookId: (j['BookID'] as String?) ?? '',
+    title: (j['Title'] as String?) ?? 'Untitled',
+    author: (j['Author'] as String?) ?? 'Unknown',
+    coverImage: j['CoverImage'] as String?,
+  );
 }
 
 class BorrowingCopy {

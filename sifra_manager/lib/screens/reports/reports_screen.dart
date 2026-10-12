@@ -12,6 +12,7 @@ import 'report_metric_card.dart';
 import 'reports_tabs.dart';
 
 enum _Range { all, today, week, month }
+
 enum _Tab { overview, sales, borrowings, inventory, events }
 
 class ReportsScreen extends StatefulWidget {
@@ -147,15 +148,15 @@ class _ReportsScreenState extends State<ReportsScreen> {
   int get _lowStockCount =>
       (_data?.inventory ?? []).where((i) => i.currentStock < 20).length;
 
-  int get _eventAttendees => _filteredEvents.fold(
-      0, (s, e) => s + e.activeRegistrations);
+  int get _eventAttendees =>
+      _filteredEvents.fold(0, (s, e) => s + e.activeRegistrations);
 
   String get _rangeLabel => switch (_range) {
-        _Range.all => 'All Time',
-        _Range.today => 'Today',
-        _Range.week => 'This Week',
-        _Range.month => 'This Month',
-      };
+    _Range.all => 'All Time',
+    _Range.today => 'Today',
+    _Range.week => 'This Week',
+    _Range.month => 'This Month',
+  };
 
   Future<void> _export() async {
     final d = _data;
@@ -178,11 +179,13 @@ class _ReportsScreenState extends State<ReportsScreen> {
       }
     } catch (_) {
       if (!mounted) return;
-      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-        content: Text('Failed to export CSV'),
-        backgroundColor: SifraColors.danger,
-        behavior: SnackBarBehavior.floating,
-      ));
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('Failed to export CSV'),
+          backgroundColor: SifraColors.danger,
+          behavior: SnackBarBehavior.floating,
+        ),
+      );
     }
   }
 
@@ -191,30 +194,34 @@ class _ReportsScreenState extends State<ReportsScreen> {
     return Scaffold(
       backgroundColor: SifraColors.cream,
       body: _loading
-          ? const Center(child: CircularProgressIndicator(color: SifraColors.gold))
+          ? const Center(
+              child: CircularProgressIndicator(color: SifraColors.gold),
+            )
           : _error != null
-              ? _errorView()
-              : _body(),
+          ? _errorView()
+          : _body(),
     );
   }
 
   Widget _errorView() => Center(
-        child: Padding(
-          padding: const EdgeInsets.all(24),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              const Icon(Icons.cloud_off, size: 48, color: SifraColors.muted),
-              const SizedBox(height: 12),
-              Text(_error!,
-                  textAlign: TextAlign.center,
-                  style: const TextStyle(color: SifraColors.muted)),
-              const SizedBox(height: 16),
-              OutlinedButton(onPressed: _load, child: const Text('Retry')),
-            ],
+    child: Padding(
+      padding: const EdgeInsets.all(24),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          const Icon(Icons.cloud_off, size: 48, color: SifraColors.muted),
+          const SizedBox(height: 12),
+          Text(
+            _error!,
+            textAlign: TextAlign.center,
+            style: const TextStyle(color: SifraColors.muted),
           ),
-        ),
-      );
+          const SizedBox(height: 16),
+          OutlinedButton(onPressed: _load, child: const Text('Retry')),
+        ],
+      ),
+    ),
+  );
 
   Widget _body() {
     return RefreshIndicator(
@@ -223,8 +230,10 @@ class _ReportsScreenState extends State<ReportsScreen> {
       child: ListView(
         padding: const EdgeInsets.fromLTRB(16, 16, 16, 80),
         children: [
-          Text('Manager Reports & Analytics',
-              style: Theme.of(context).textTheme.displaySmall),
+          Text(
+            'Manager Reports & Analytics',
+            style: Theme.of(context).textTheme.displaySmall,
+          ),
           const SizedBox(height: 4),
           const Text(
             'Operational analytics for café sales, library borrowings, inventory health, and events.',
@@ -280,8 +289,9 @@ class _ReportsScreenState extends State<ReportsScreen> {
                     ? 'Items require inventory restock'
                     : 'All inventory levels healthy',
                 icon: Icons.warning_amber_outlined,
-                iconColor:
-                    _lowStockCount > 0 ? SifraColors.danger : SifraColors.muted,
+                iconColor: _lowStockCount > 0
+                    ? SifraColors.danger
+                    : SifraColors.muted,
                 iconBg: _lowStockCount > 0
                     ? SifraColors.danger.withValues(alpha: 0.12)
                     : const Color(0x14706F6F),
@@ -321,11 +331,12 @@ class _ReportsScreenState extends State<ReportsScreen> {
               FilledButton.icon(
                 onPressed: _export,
                 icon: const Icon(Icons.download, size: 16),
-                label: const Text('Export',
-                    style: TextStyle(fontSize: 12)),
+                label: const Text('Export', style: TextStyle(fontSize: 12)),
                 style: FilledButton.styleFrom(
                   padding: const EdgeInsets.symmetric(
-                      horizontal: 14, vertical: 14),
+                    horizontal: 14,
+                    vertical: 14,
+                  ),
                 ),
               ),
             ],
@@ -402,20 +413,23 @@ class _ReportsScreenState extends State<ReportsScreen> {
               onTap: () => setState(() => _tab = t.$1),
               child: Container(
                 padding: const EdgeInsets.symmetric(
-                    horizontal: 14, vertical: 10),
+                  horizontal: 14,
+                  vertical: 10,
+                ),
                 decoration: BoxDecoration(
                   color: selected ? SifraColors.gold : Colors.white,
                   borderRadius: BorderRadius.circular(8),
                   border: Border.all(
-                      color: selected
-                          ? SifraColors.gold
-                          : SifraColors.border),
+                    color: selected ? SifraColors.gold : SifraColors.border,
+                  ),
                 ),
                 child: Row(
                   children: [
-                    Icon(t.$3,
-                        size: 14,
-                        color: selected ? Colors.white : SifraColors.muted),
+                    Icon(
+                      t.$3,
+                      size: 14,
+                      color: selected ? Colors.white : SifraColors.muted,
+                    ),
                     const SizedBox(width: 6),
                     Text(
                       t.$2,

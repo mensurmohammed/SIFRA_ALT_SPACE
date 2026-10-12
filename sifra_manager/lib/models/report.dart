@@ -17,17 +17,17 @@ class ReportData {
   });
 
   factory ReportData.fromJson(Map<String, dynamic> j) => ReportData(
-        orders: (j['orders'] as List<dynamic>? ?? [])
-            .map((e) => OrderHistory.fromJson(e as Map<String, dynamic>))
-            .toList(),
-        borrowings: (j['borrowings'] as List<dynamic>? ?? [])
-            .map((e) => Borrowing.fromJson(e as Map<String, dynamic>))
-            .toList(),
-        inventory: (j['inventory'] as List<dynamic>? ?? [])
-            .map((e) => InventoryItem.fromJson(e as Map<String, dynamic>))
-            .toList(),
-        events: (j['events'] as List<dynamic>? ?? [])
-            .map((e) => Event.fromJson(e as Map<String, dynamic>))
-            .toList(),
-      );
+    orders: (j['orders'] as List<dynamic>? ?? [])
+        .map((e) => OrderHistory.fromJson(e as Map<String, dynamic>))
+        .toList(),
+    borrowings: (j['borrowings'] as List<dynamic>? ?? [])
+        .map((e) => Borrowing.fromJson(e as Map<String, dynamic>))
+        .toList(),
+    inventory: (j['inventory'] as List<dynamic>? ?? [])
+        .map((e) => InventoryItem.fromJson(e as Map<String, dynamic>))
+        .toList(),
+    events: (j['events'] as List<dynamic>? ?? [])
+        .map((e) => Event.fromJson(e as Map<String, dynamic>))
+        .toList(),
+  );
 }

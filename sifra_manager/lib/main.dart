@@ -169,7 +169,10 @@ class _RootState extends State<_Root> {
               builder: (_, state) =>
                   EditEventScreen(eventId: state.pathParameters['id']!),
             ),
-         GoRoute(path: '/reports', builder: (_, __) => const ReportsScreen()),
+            GoRoute(
+              path: '/reports',
+              builder: (_, __) => const ReportsScreen(),
+            ),
           ],
         ),
       ],

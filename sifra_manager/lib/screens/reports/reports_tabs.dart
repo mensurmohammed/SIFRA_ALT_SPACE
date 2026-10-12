@@ -33,10 +33,7 @@ class ReportsOverviewTab extends StatelessWidget {
           icon: Icons.coffee_outlined,
           iconColor: SifraColors.gold,
           emptyText: 'No orders found in this period.',
-          children: orders
-              .take(5)
-              .map((o) => _orderMini(o))
-              .toList(),
+          children: orders.take(5).map((o) => _orderMini(o)).toList(),
         ),
         const SizedBox(height: 16),
         _section(
@@ -47,10 +44,7 @@ class ReportsOverviewTab extends StatelessWidget {
           icon: Icons.menu_book_outlined,
           iconColor: const Color(0xFF385723),
           emptyText: 'No borrowings found in this period.',
-          children: borrowings
-              .take(5)
-              .map((b) => _borrowMini(b))
-              .toList(),
+          children: borrowings.take(5).map((b) => _borrowMini(b)).toList(),
         ),
       ],
     );
@@ -108,9 +102,13 @@ class ReportsOverviewTab extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 20),
               child: Center(
-                child: Text(emptyText,
-                    style: const TextStyle(
-                        fontSize: 12, color: SifraColors.muted)),
+                child: Text(
+                  emptyText,
+                  style: const TextStyle(
+                    fontSize: 12,
+                    color: SifraColors.muted,
+                  ),
+                ),
               ),
             )
           else
@@ -143,15 +141,18 @@ class ReportsOverviewTab extends StatelessWidget {
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
                   style: const TextStyle(
-                      fontWeight: FontWeight.w700,
-                      fontSize: 12,
-                      color: SifraColors.brown),
+                    fontWeight: FontWeight.w700,
+                    fontSize: 12,
+                    color: SifraColors.brown,
+                  ),
                 ),
                 const SizedBox(height: 2),
                 Text(
                   _time(o.orderDate),
                   style: const TextStyle(
-                      fontSize: 10, color: SifraColors.muted),
+                    fontSize: 10,
+                    color: SifraColors.muted,
+                  ),
                 ),
               ],
             ),
@@ -162,14 +163,17 @@ class ReportsOverviewTab extends StatelessWidget {
               Text(
                 '${o.totalAmount.toStringAsFixed(0)} ETB',
                 style: const TextStyle(
-                    fontWeight: FontWeight.w700,
-                    fontSize: 12,
-                    color: SifraColors.brown),
+                  fontWeight: FontWeight.w700,
+                  fontSize: 12,
+                  color: SifraColors.brown,
+                ),
               ),
               const SizedBox(height: 2),
-              _miniPill(o.status,
-                  done ? const Color(0xFFE2F0D9) : const Color(0xFFFEF3C7),
-                  done ? const Color(0xFF385723) : const Color(0xFF92400E)),
+              _miniPill(
+                o.status,
+                done ? const Color(0xFFE2F0D9) : const Color(0xFFFEF3C7),
+                done ? const Color(0xFF385723) : const Color(0xFF92400E),
+              ),
             ],
           ),
         ],
@@ -198,9 +202,10 @@ class ReportsOverviewTab extends StatelessWidget {
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
                   style: const TextStyle(
-                      fontWeight: FontWeight.w700,
-                      fontSize: 12,
-                      color: SifraColors.brown),
+                    fontWeight: FontWeight.w700,
+                    fontSize: 12,
+                    color: SifraColors.brown,
+                  ),
                 ),
                 const SizedBox(height: 2),
                 Text(
@@ -208,7 +213,9 @@ class ReportsOverviewTab extends StatelessWidget {
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
                   style: const TextStyle(
-                      fontSize: 10, color: SifraColors.muted),
+                    fontSize: 10,
+                    color: SifraColors.muted,
+                  ),
                 ),
               ],
             ),
@@ -224,17 +231,16 @@ class ReportsOverviewTab extends StatelessWidget {
   }
 
   Widget _miniPill(String text, Color bg, Color fg) => Container(
-        padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
-        decoration: BoxDecoration(
-          color: bg,
-          borderRadius: BorderRadius.circular(20),
-        ),
-        child: Text(
-          text,
-          style: TextStyle(
-              fontSize: 9, fontWeight: FontWeight.w700, color: fg),
-        ),
-      );
+    padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
+    decoration: BoxDecoration(
+      color: bg,
+      borderRadius: BorderRadius.circular(20),
+    ),
+    child: Text(
+      text,
+      style: TextStyle(fontSize: 9, fontWeight: FontWeight.w700, color: fg),
+    ),
+  );
 
   String _time(DateTime d) {
     final hour12 = d.hour % 12 == 0 ? 12 : d.hour % 12;
@@ -255,8 +261,10 @@ class ReportsSalesTab extends StatelessWidget {
       return const Padding(
         padding: EdgeInsets.symmetric(vertical: 40),
         child: Center(
-          child: Text('No orders match your criteria.',
-              style: TextStyle(fontSize: 12, color: SifraColors.muted)),
+          child: Text(
+            'No orders match your criteria.',
+            style: TextStyle(fontSize: 12, color: SifraColors.muted),
+          ),
         ),
       );
     }
@@ -270,37 +278,46 @@ class ReportsSalesTab extends StatelessWidget {
               Text(
                 '#${o.shortId}',
                 style: const TextStyle(
-                    fontFamily: 'monospace',
-                    fontSize: 11,
-                    color: SifraColors.muted),
+                  fontFamily: 'monospace',
+                  fontSize: 11,
+                  color: SifraColors.muted,
+                ),
               ),
               const SizedBox(height: 3),
               Text(
-                o.orderName?.isNotEmpty == true ? o.orderName! : 'Walk-in Customer',
+                o.orderName?.isNotEmpty == true
+                    ? o.orderName!
+                    : 'Walk-in Customer',
                 style: const TextStyle(
-                    fontWeight: FontWeight.w700,
-                    fontSize: 13,
-                    color: SifraColors.brown),
+                  fontWeight: FontWeight.w700,
+                  fontSize: 13,
+                  color: SifraColors.brown,
+                ),
               ),
               const SizedBox(height: 2),
-              Text(_fmtFull(o.orderDate),
-                  style: const TextStyle(
-                      fontSize: 11, color: SifraColors.muted)),
+              Text(
+                _fmtFull(o.orderDate),
+                style: const TextStyle(fontSize: 11, color: SifraColors.muted),
+              ),
             ],
           ),
           right: Column(
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
-              Text('${o.totalAmount.toStringAsFixed(0)} ETB',
-                  style: const TextStyle(
-                      fontWeight: FontWeight.w700,
-                      fontSize: 13,
-                      color: SifraColors.brown)),
+              Text(
+                '${o.totalAmount.toStringAsFixed(0)} ETB',
+                style: const TextStyle(
+                  fontWeight: FontWeight.w700,
+                  fontSize: 13,
+                  color: SifraColors.brown,
+                ),
+              ),
               const SizedBox(height: 4),
               _pill(
-                  o.status,
-                  done ? const Color(0xFFE2F0D9) : const Color(0xFFFEF3C7),
-                  done ? const Color(0xFF385723) : const Color(0xFF92400E)),
+                o.status,
+                done ? const Color(0xFFE2F0D9) : const Color(0xFFFEF3C7),
+                done ? const Color(0xFF385723) : const Color(0xFF92400E),
+              ),
             ],
           ),
         );
@@ -320,8 +337,10 @@ class ReportsBorrowingsTab extends StatelessWidget {
       return const Padding(
         padding: EdgeInsets.symmetric(vertical: 40),
         child: Center(
-          child: Text('No borrowings match your criteria.',
-              style: TextStyle(fontSize: 12, color: SifraColors.muted)),
+          child: Text(
+            'No borrowings match your criteria.',
+            style: TextStyle(fontSize: 12, color: SifraColors.muted),
+          ),
         ),
       );
     }
@@ -332,28 +351,38 @@ class ReportsBorrowingsTab extends StatelessWidget {
           left: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(b.customerDisplay,
-                  style: const TextStyle(
-                      fontWeight: FontWeight.w700,
-                      fontSize: 13,
-                      color: SifraColors.brown)),
+              Text(
+                b.customerDisplay,
+                style: const TextStyle(
+                  fontWeight: FontWeight.w700,
+                  fontSize: 13,
+                  color: SifraColors.brown,
+                ),
+              ),
               if (b.user?.email.isNotEmpty == true)
-                Text(b.user!.email,
-                    style: const TextStyle(
-                        fontSize: 11, color: SifraColors.muted)),
-              const SizedBox(height: 4),
-              Text(b.copy.book.title,
-                  maxLines: 2,
-                  overflow: TextOverflow.ellipsis,
+                Text(
+                  b.user!.email,
                   style: const TextStyle(
-                      fontSize: 12, color: SifraColors.brown)),
+                    fontSize: 11,
+                    color: SifraColors.muted,
+                  ),
+                ),
               const SizedBox(height: 4),
-              Text('Borrowed: ${_fmtDate(b.borrowedAt)}',
-                  style: const TextStyle(
-                      fontSize: 11, color: SifraColors.muted)),
-              const Text('Due: N/A',
-                  style: TextStyle(
-                      fontSize: 11, color: SifraColors.muted)),
+              Text(
+                b.copy.book.title,
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
+                style: const TextStyle(fontSize: 12, color: SifraColors.brown),
+              ),
+              const SizedBox(height: 4),
+              Text(
+                'Borrowed: ${_fmtDate(b.borrowedAt)}',
+                style: const TextStyle(fontSize: 11, color: SifraColors.muted),
+              ),
+              const Text(
+                'Due: N/A',
+                style: TextStyle(fontSize: 11, color: SifraColors.muted),
+              ),
             ],
           ),
           right: _pill(
@@ -378,8 +407,10 @@ class ReportsInventoryTab extends StatelessWidget {
       return const Padding(
         padding: EdgeInsets.symmetric(vertical: 40),
         child: Center(
-          child: Text('No inventory items match your search.',
-              style: TextStyle(fontSize: 12, color: SifraColors.muted)),
+          child: Text(
+            'No inventory items match your search.',
+            style: TextStyle(fontSize: 12, color: SifraColors.muted),
+          ),
         ),
       );
     }
@@ -390,19 +421,24 @@ class ReportsInventoryTab extends StatelessWidget {
           left: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(i.name,
-                  style: const TextStyle(
-                      fontWeight: FontWeight.w700,
-                      fontSize: 13,
-                      color: SifraColors.brown)),
+              Text(
+                i.name,
+                style: const TextStyle(
+                  fontWeight: FontWeight.w700,
+                  fontSize: 13,
+                  color: SifraColors.brown,
+                ),
+              ),
               const SizedBox(height: 2),
-              Text('Category: General',
-                  style: const TextStyle(
-                      fontSize: 11, color: SifraColors.muted)),
+              Text(
+                'Category: General',
+                style: const TextStyle(fontSize: 11, color: SifraColors.muted),
+              ),
               const SizedBox(height: 2),
-              Text('Stock: ${i.currentStock} ${i.unit}',
-                  style: const TextStyle(
-                      fontSize: 12, color: SifraColors.brown)),
+              Text(
+                'Stock: ${i.currentStock} ${i.unit}',
+                style: const TextStyle(fontSize: 12, color: SifraColors.brown),
+              ),
             ],
           ),
           right: _pill(
@@ -427,8 +463,10 @@ class ReportsEventsTab extends StatelessWidget {
       return const Padding(
         padding: EdgeInsets.symmetric(vertical: 40),
         child: Center(
-          child: Text('No events match your criteria.',
-              style: TextStyle(fontSize: 12, color: SifraColors.muted)),
+          child: Text(
+            'No events match your criteria.',
+            style: TextStyle(fontSize: 12, color: SifraColors.muted),
+          ),
         ),
       );
     }
@@ -440,19 +478,24 @@ class ReportsEventsTab extends StatelessWidget {
           left: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(e.title,
-                  style: const TextStyle(
-                      fontWeight: FontWeight.w700,
-                      fontSize: 13,
-                      color: SifraColors.brown)),
+              Text(
+                e.title,
+                style: const TextStyle(
+                  fontWeight: FontWeight.w700,
+                  fontSize: 13,
+                  color: SifraColors.brown,
+                ),
+              ),
               const SizedBox(height: 3),
-              Text(_fmtFull(e.eventDate),
-                  style: const TextStyle(
-                      fontSize: 11, color: SifraColors.muted)),
+              Text(
+                _fmtFull(e.eventDate),
+                style: const TextStyle(fontSize: 11, color: SifraColors.muted),
+              ),
               const SizedBox(height: 3),
-              Text('Registrations: $regs / $cap',
-                  style: const TextStyle(
-                      fontSize: 12, color: SifraColors.brown)),
+              Text(
+                'Registrations: $regs / $cap',
+                style: const TextStyle(fontSize: 12, color: SifraColors.brown),
+              ),
             ],
           ),
           right: _pill(
@@ -488,13 +531,13 @@ Widget _row({required Widget left, required Widget right}) {
 }
 
 Widget _pill(String text, Color bg, Color fg) => Container(
-      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
-      decoration: BoxDecoration(color: bg, borderRadius: BorderRadius.circular(20)),
-      child: Text(
-        text,
-        style: TextStyle(fontSize: 10, fontWeight: FontWeight.w700, color: fg),
-      ),
-    );
+  padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+  decoration: BoxDecoration(color: bg, borderRadius: BorderRadius.circular(20)),
+  child: Text(
+    text,
+    style: TextStyle(fontSize: 10, fontWeight: FontWeight.w700, color: fg),
+  ),
+);
 
 String _fmtFull(DateTime d) {
   final hour12 = d.hour % 12 == 0 ? 12 : d.hour % 12;
