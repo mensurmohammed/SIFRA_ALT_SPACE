@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'screens/reports/reports_screen.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import 'screens/events/events_screen.dart';
@@ -168,10 +169,7 @@ class _RootState extends State<_Root> {
               builder: (_, state) =>
                   EditEventScreen(eventId: state.pathParameters['id']!),
             ),
-            GoRoute(
-              path: '/reports',
-              builder: (_, __) => const PlaceholderScreen(title: 'Reports'),
-            ),
+         GoRoute(path: '/reports', builder: (_, __) => const ReportsScreen()),
           ],
         ),
       ],
