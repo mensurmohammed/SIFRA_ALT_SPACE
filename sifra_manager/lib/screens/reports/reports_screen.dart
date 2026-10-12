@@ -158,7 +158,7 @@ class _ReportsScreenState extends State<ReportsScreen> {
     _Range.month => 'This Month',
   };
 
-  Future<void> _export() async {
+    Future<void> _export() async {
     final d = _data;
     if (d == null) return;
     try {
@@ -177,15 +177,13 @@ class _ReportsScreenState extends State<ReportsScreen> {
           await CsvExportHelper.exportSales(d, _filteredOrders);
           break;
       }
-    } catch (_) {
+    } catch (e) {
       if (!mounted) return;
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Text('Failed to export CSV'),
-          backgroundColor: SifraColors.danger,
-          behavior: SnackBarBehavior.floating,
-        ),
-      );
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        content: Text('Export failed: $e'),
+        backgroundColor: SifraColors.danger,
+        behavior: SnackBarBehavior.floating,
+      ));
     }
   }
 
@@ -242,16 +240,33 @@ class _ReportsScreenState extends State<ReportsScreen> {
           const SizedBox(height: 16),
 
           // Range filter row
-          Row(
-            children: [
-              Expanded(child: _rangeBar()),
-              const SizedBox(width: 8),
-              IconButton(
-                onPressed: _load,
-                icon: const Icon(Icons.refresh, color: SifraColors.gold),
-              ),
-            ],
-          ),
+         Row(
+  children: [
+    Expanded(
+      child: TextField(
+        controller: _searchCtrl,
+        decoration: const InputDecoration(
+          hintText: 'Search report data...',
+          prefixIcon: Icon(Icons.search, size: 18),
+          isDense: true,
+        ),
+      ),
+    ),
+    const SizedBox(width: 8),
+    SizedBox(
+      width: 110,
+      child: FilledButton.icon(
+        onPressed: _export,
+        icon: const Icon(Icons.download, size: 16),
+        label: const Text('Export', style: TextStyle(fontSize: 12)),
+        style: FilledButton.styleFrom(
+          padding: const EdgeInsets.symmetric(horizontal: 8),
+          minimumSize: const Size(0, 48),
+        ),
+      ),
+    ),
+  ],
+),
           const SizedBox(height: 16),
 
           // Metric cards — 2 columns
@@ -329,16 +344,14 @@ class _ReportsScreenState extends State<ReportsScreen> {
               ),
               const SizedBox(width: 8),
               FilledButton.icon(
-                onPressed: _export,
-                icon: const Icon(Icons.download, size: 16),
-                label: const Text('Export', style: TextStyle(fontSize: 12)),
-                style: FilledButton.styleFrom(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 14,
-                    vertical: 14,
-                  ),
-                ),
-              ),
+  onPressed: _export,
+  icon: const Icon(Icons.download, size: 16),
+  label: const Text('Export', style: TextStyle(fontSize: 12)),
+  style: FilledButton.styleFrom(
+    padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 14),
+    minimumSize: const Size(0, 48),
+  ),
+),
             ],
           ),
           const SizedBox(height: 16),
