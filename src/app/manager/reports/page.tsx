@@ -153,9 +153,14 @@ export default function ManagerReportsPage() {
     return inventory.filter((i) => (i.CurrentStock || 0) < 20).length;
   }, [inventory]);
 
-  const totalEventRegistrations = useMemo(() => {
-    return filteredEvents.reduce((sum, e) => sum + (e.RegisteredCount || 0), 0);
-  }, [filteredEvents]);
+ const totalEventRegistrations = useMemo(() => {
+  return filteredEvents.reduce(
+    (sum, e) =>
+      sum +
+      (e.Registrations?.filter((r: any) => r.Status === "Registered").length || 0),
+    0
+  );
+}, [filteredEvents]);
 
   // CSV Export functions
   const downloadCSV = (filename: string, headers: string[], rows: (string | number)[][]) => {
@@ -794,7 +799,7 @@ export default function ManagerReportsPage() {
                               {new Date(evt.EventDate).toLocaleString()}
                             </td>
                             <td className="p-3.5 font-bold text-primary-dark">
-                              {evt.RegisteredCount || 0} / {evt.Capacity || "∞"}
+                              {evt.Registrations?.filter((r: any) => r.Status === "Registered").length || 0} / {evt.Capacity || "∞"}
                             </td>
                             <td className="p-3.5">
                               <span className="px-2.5 py-1 rounded-full text-[10px] font-bold bg-blue-100 text-blue-800">

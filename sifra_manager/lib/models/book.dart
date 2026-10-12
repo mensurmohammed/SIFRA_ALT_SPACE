@@ -11,11 +11,13 @@ class BookCategory {
 
 class BookCopy {
   final String copyId;
+  final String barcode;
   final String status;
-  BookCopy({required this.copyId, required this.status});
+  BookCopy({required this.copyId, required this.barcode, required this.status});
 
   factory BookCopy.fromJson(Map<String, dynamic> j) => BookCopy(
     copyId: j['CopyID'] as String,
+    barcode: (j['Barcode'] as String?) ?? '',
     status: (j['Status'] as String?) ?? 'Available',
   );
 }

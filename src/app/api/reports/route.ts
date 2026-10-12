@@ -32,9 +32,10 @@ export async function GET(req: Request) {
       prisma.inventoryItem.findMany({
         orderBy: { CurrentStock: "asc" },
       }),
-      prisma.event.findMany({
-        orderBy: { EventDate: "desc" },
-      }),
+   prisma.event.findMany({
+  include: { Registrations: true },
+  orderBy: { EventDate: "desc" },
+}),
     ]);
 
     return NextResponse.json({

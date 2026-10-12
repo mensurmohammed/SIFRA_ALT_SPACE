@@ -104,6 +104,19 @@ class ApiClient {
     return _handle(res);
   }
 
+  static Future<Map<String, dynamic>> patch(
+    String path,
+    Map<String, dynamic> body, {
+    bool auth = true,
+  }) async {
+    final res = await http.patch(
+      Uri.parse('$baseUrl$path'),
+      headers: await _headers(auth: auth),
+      body: jsonEncode(body),
+    );
+    return _handle(res);
+  }
+
   static Map<String, dynamic> _handle(http.Response res) {
     final body = res.body.isEmpty ? <String, dynamic>{} : jsonDecode(res.body);
     if (res.statusCode >= 200 && res.statusCode < 300) {

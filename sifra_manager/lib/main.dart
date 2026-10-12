@@ -1,7 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
+import 'screens/events/events_screen.dart';
 import 'screens/books/edit_book_screen.dart';
+import 'screens/borrowings/borrowings_screen.dart';
+import 'screens/borrowings/new_borrowing_screen.dart';
+import 'screens/borrowings/return_borrowing_screen.dart';
+import 'models/borrowing.dart';
+import 'screens/events/create_event_screen.dart';
+import 'screens/events/edit_event_screen.dart';
 
 import 'core/auth_service.dart';
 import 'screens/login_screen.dart';
@@ -48,10 +55,38 @@ class _BookEditPlaceholder extends StatelessWidget {
       const PlaceholderScreen(title: 'Edit Book');
 }
 
+class _NewBorrowingPlaceholder extends StatelessWidget {
+  const _NewBorrowingPlaceholder();
+  @override
+  Widget build(BuildContext context) =>
+      const PlaceholderScreen(title: 'New Borrowing');
+}
+
+class _ReturnBorrowingPlaceholder extends StatelessWidget {
+  const _ReturnBorrowingPlaceholder();
+  @override
+  Widget build(BuildContext context) =>
+      const PlaceholderScreen(title: 'Return & Pay');
+}
+
 class _Root extends StatefulWidget {
   const _Root();
   @override
   State<_Root> createState() => _RootState();
+}
+
+class _CreateEventPlaceholder extends StatelessWidget {
+  const _CreateEventPlaceholder();
+  @override
+  Widget build(BuildContext context) =>
+      const PlaceholderScreen(title: 'Create Event');
+}
+
+class _EditEventPlaceholder extends StatelessWidget {
+  const _EditEventPlaceholder();
+  @override
+  Widget build(BuildContext context) =>
+      const PlaceholderScreen(title: 'Edit Event');
 }
 
 class _RootState extends State<_Root> {
@@ -110,11 +145,28 @@ class _RootState extends State<_Root> {
             ),
             GoRoute(
               path: '/borrowings',
-              builder: (_, __) => const PlaceholderScreen(title: 'Borrowings'),
+              builder: (_, __) => const BorrowingsScreen(),
             ),
             GoRoute(
-              path: '/events',
-              builder: (_, __) => const PlaceholderScreen(title: 'Events'),
+              path: '/borrowings/new',
+              builder: (_, __) => const NewBorrowingScreen(),
+            ),
+            GoRoute(
+              path: '/borrowings/:id/return',
+              builder: (_, state) {
+                final b = state.extra as Borrowing;
+                return ReturnBorrowingScreen(borrowing: b);
+              },
+            ),
+            GoRoute(path: '/events', builder: (_, __) => const EventsScreen()),
+            GoRoute(
+              path: '/events/add',
+              builder: (_, __) => const CreateEventScreen(),
+            ),
+            GoRoute(
+              path: '/events/:id',
+              builder: (_, state) =>
+                  EditEventScreen(eventId: state.pathParameters['id']!),
             ),
             GoRoute(
               path: '/reports',
